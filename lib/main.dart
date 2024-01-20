@@ -1,3 +1,4 @@
+import 'package:employee_data/core/constant.dart';
 import 'package:employee_data/presentation/page_home/screen_home.dart';
 import 'package:flutter/material.dart';
 
@@ -10,9 +11,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: ScreenHome(),
+      theme: appThemeData,
+      home: const ScreenHome(),
     );
   }
 }

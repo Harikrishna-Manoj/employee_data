@@ -1,4 +1,5 @@
 import 'package:employee_data/core/constant.dart';
+import 'package:employee_data/presentation/page_add_employee/screen_add_employee.dart';
 import 'package:employee_data/presentation/page_home/widget/home_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -17,60 +18,67 @@ class ScreenHome extends StatelessWidget {
         ),
         backgroundColor: blueColor,
       ),
-      body: SizedBox(
-        width: size.width,
-        height: size.height,
-        child: Stack(
-          alignment: AlignmentDirectional.bottomCenter,
-          children: [
-            IteamDeleteInstruction(size: size, title: "Swipe left to delete"),
-            Column(
-              children: [
-                EmployeeCategoriesTitle(
-                  size: size,
-                  title: "Current employees",
-                ),
-                Flexible(
-                  child: ListView.separated(
-                      shrinkWrap: true,
-                      physics: const BouncingScrollPhysics(),
-                      itemBuilder: (context, index) => EmployeeDetailTitle(
-                          size: size,
-                          employeeName: "employeeName",
-                          employeeWorkingDomain: "employeeWorkingDomain",
-                          employeeWorkingPeriod: "employeeWorkingPeriod"),
-                      separatorBuilder: (context, index) =>
-                          const Divider(color: dividerGreyColor),
-                      itemCount: 3),
-                ),
-                EmployeeCategoriesTitle(
-                    size: size, title: "Previous employees"),
-                Expanded(
-                  child: ListView.separated(
-                      shrinkWrap: true,
-                      physics: const BouncingScrollPhysics(),
-                      itemBuilder: (context, index) => EmployeeDetailTitle(
-                          size: size,
-                          employeeName: "employeeName",
-                          employeeWorkingDomain: "employeeWorkingDomain",
-                          employeeWorkingPeriod: "employeeWorkingPeriod"),
-                      separatorBuilder: (context, index) =>
-                          const Divider(color: dividerGreyColor),
-                      itemCount: 6),
-                ),
-              ],
-            ),
-          ],
+      body: SafeArea(
+        child: SizedBox(
+          width: size.width,
+          height: size.height,
+          child: Stack(
+            alignment: AlignmentDirectional.bottomCenter,
+            children: [
+              Column(
+                children: [
+                  EmployeeCategoriesTitle(
+                    size: size,
+                    title: "Current employees",
+                  ),
+                  Flexible(
+                    child: ListView.separated(
+                        shrinkWrap: true,
+                        physics: const BouncingScrollPhysics(),
+                        itemBuilder: (context, index) => EmployeeDetailTitle(
+                            size: size,
+                            employeeName: "employeeName",
+                            employeeWorkingDomain: "employeeWorkingDomain",
+                            employeeWorkingPeriod: "employeeWorkingPeriod"),
+                        separatorBuilder: (context, index) =>
+                            const Divider(color: dividerGreyColor),
+                        itemCount: 12),
+                  ),
+                  EmployeeCategoriesTitle(
+                      size: size, title: "Previous employees"),
+                  Expanded(
+                    child: ListView.separated(
+                        physics: const BouncingScrollPhysics(),
+                        itemBuilder: (context, index) => EmployeeDetailTitle(
+                            size: size,
+                            employeeName: "employeeName",
+                            employeeWorkingDomain: "employeeWorkingDomain",
+                            employeeWorkingPeriod: "employeeWorkingPeriod"),
+                        separatorBuilder: (context, index) =>
+                            const Divider(color: dividerGreyColor),
+                        itemCount: 9),
+                  ),
+                ],
+              ),
+              IteamDeleteInstruction(size: size, title: "Swipe left to delete"),
+            ],
+          ),
         ),
       ),
-      floatingActionButton: FloatingActionButton.small(
-        backgroundColor: blueColor,
-        elevation: 0,
-        onPressed: () {},
-        child: const Icon(
-          Icons.add,
-          size: 18,
-          color: whiteColor,
+      floatingActionButton: SizedBox(
+        height: 50,
+        width: 50,
+        child: FloatingActionButton.small(
+          backgroundColor: blueColor,
+          elevation: 0,
+          onPressed: () => Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) => const ScreenAddEmployee(),
+          )),
+          child: const Icon(
+            Icons.add,
+            size: 18,
+            color: whiteColor,
+          ),
         ),
       ),
     );
