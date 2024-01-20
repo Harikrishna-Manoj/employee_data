@@ -72,7 +72,7 @@ class ScreenHome extends StatelessWidget {
           backgroundColor: blueColor,
           elevation: 0,
           onPressed: () => Navigator.of(context).push(MaterialPageRoute(
-            builder: (context) => const ScreenAddEmployee(),
+            builder: (context) => const ScreenAddEmployee(isAddingScreen: true),
           )),
           child: const Icon(
             Icons.add,
