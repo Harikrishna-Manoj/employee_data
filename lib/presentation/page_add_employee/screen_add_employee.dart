@@ -10,6 +10,8 @@ class ScreenAddEmployee extends StatelessWidget {
     Size size = MediaQuery.sizeOf(context);
     TextEditingController employeeNameController = TextEditingController();
     TextEditingController employeeRoleController = TextEditingController();
+    GlobalKey<FormState> formKey1 = GlobalKey<FormState>();
+    GlobalKey<FormState> formKey2 = GlobalKey<FormState>();
 
     return Scaffold(
       appBar: AppBar(
@@ -37,6 +39,7 @@ class ScreenAddEmployee extends StatelessWidget {
           child: Column(
             children: [
               DataTextField(
+                  formKey: formKey1,
                   isVisible: false,
                   hintString: "Employee name",
                   textFieldPrefixIcon:
@@ -46,6 +49,7 @@ class ScreenAddEmployee extends StatelessWidget {
                 height: 23,
               ),
               DataTextField(
+                  formKey: formKey2,
                   isVisible: true,
                   hintString: "Select role",
                   textFieldPrefixIcon:
@@ -54,7 +58,7 @@ class ScreenAddEmployee extends StatelessWidget {
               const SizedBox(
                 height: 23,
               ),
-              DatePicker(size: size),
+              DatePickeCalendar(size: size),
               const Spacer(),
               const Divider(
                 color: dividerGreyColor,
@@ -67,18 +71,26 @@ class ScreenAddEmployee extends StatelessWidget {
           ),
         ),
       ),
-      floatingActionButton: const Row(
+      floatingActionButton: Row(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           CustomButton(
+              isSaveButton: false,
+              formKey1: formKey1,
+              formKey2: formKey2,
               text: "Cancel",
               buttonColor: lightButtonBlue,
               textColor: blueColor),
-          SizedBox(
+          const SizedBox(
             width: 16,
           ),
           CustomButton(
-              text: "Save", buttonColor: blueColor, textColor: Colors.white),
+              isSaveButton: true,
+              formKey1: formKey1,
+              formKey2: formKey2,
+              text: "Save",
+              buttonColor: blueColor,
+              textColor: Colors.white),
         ],
       ),
     );
