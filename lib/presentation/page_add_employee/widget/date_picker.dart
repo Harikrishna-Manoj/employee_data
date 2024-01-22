@@ -2,7 +2,6 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'dart:collection';
 import 'dart:math' as math;
 
 import 'package:employee_data/core/constant.dart';
@@ -159,6 +158,7 @@ Future<DateTime?> showCustomDatePicker({
   String? fieldLabelText,
   TextInputType? keyboardType,
   Offset? anchorPoint,
+  required bool isDateStartingCalendar,
   final ValueChanged<DatePickerEntryMode>? onDatePickerModeChange,
   final Icon? switchToInputEntryModeIcon,
   final Icon? switchToCalendarEntryModeIcon,
@@ -205,6 +205,7 @@ Future<DateTime?> showCustomDatePicker({
     onDatePickerModeChange: onDatePickerModeChange,
     switchToInputEntryModeIcon: switchToInputEntryModeIcon,
     switchToCalendarEntryModeIcon: switchToCalendarEntryModeIcon,
+    isDateStartingCalendar: isDateStartingCalendar,
   );
 
   if (textDirection != null) {
@@ -268,6 +269,7 @@ class DatePickerDialog extends StatefulWidget {
     this.onDatePickerModeChange,
     this.switchToInputEntryModeIcon,
     this.switchToCalendarEntryModeIcon,
+    this.isDateStartingCalendar,
   })  : initialDate =
             initialDate == null ? null : DateUtils.dateOnly(initialDate),
         firstDate = DateUtils.dateOnly(firstDate),
@@ -297,6 +299,8 @@ class DatePickerDialog extends StatefulWidget {
   ///
   /// If this is null, there is no selected date. A date must be selected to
   /// submit the dialog.
+
+  final bool? isDateStartingCalendar;
   final DateTime? initialDate;
 
   /// The earliest allowable [DateTime] that the user can select.
@@ -510,6 +514,10 @@ class _DatePickerDialogState extends State<DatePickerDialog>
     final DatePickerThemeData datePickerTheme = DatePickerTheme.of(context);
     final DatePickerThemeData defaults = DatePickerTheme.defaults(context);
     final TextTheme textTheme = theme.textTheme;
+    List<String> customButtonOptions = widget.isDateStartingCalendar ?? true
+        ? ["Today", "Next Monday", "Next Tuesday", "After 1 Week"]
+        : ["No date", "Today"];
+    int? choiceChipValue;
 
     // There's no M3 spec for a landscape layout input (not calendar)
     // date picker. To ensure that the date displayed in the input
@@ -561,7 +569,7 @@ class _DatePickerDialogState extends State<DatePickerDialog>
           bottomDate,
           TextButton(
             style: TextButton.styleFrom(
-                backgroundColor: calendarLightButtonBlue,
+                backgroundColor: lightButtonBlue,
                 minimumSize: const Size(73, 40),
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10))),
@@ -681,11 +689,11 @@ class _DatePickerDialogState extends State<DatePickerDialog>
           ? datePickerTheme.elevation ?? defaults.elevation!
           : datePickerTheme.elevation ?? dialogTheme.elevation ?? 24,
       shadowColor: datePickerTheme.shadowColor ?? defaults.shadowColor,
-      surfaceTintColor:
-          datePickerTheme.surfaceTintColor ?? defaults.surfaceTintColor,
-      shape: useMaterial3
-          ? datePickerTheme.shape ?? defaults.shape
-          : datePickerTheme.shape ?? dialogTheme.shape ?? defaults.shape,
+      surfaceTintColor: Colors.white,
+      // datePickerTheme.surfaceTintColor ?? defaults.surfaceTintColor,
+      shape: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(16),
+          borderSide: BorderSide(color: Colors.transparent)),
       insetPadding:
           const EdgeInsets.symmetric(horizontal: 16.0, vertical: 24.0),
       clipBehavior: Clip.antiAlias,
@@ -714,16 +722,58 @@ class _DatePickerDialogState extends State<DatePickerDialog>
                   mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: <Widget>[
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [],
+                    const SizedBox(
+                      height: 7,
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [],
+                    SizedBox(
+                      height: widget.isDateStartingCalendar ?? true ? 110 : 55,
+                      child: StatefulBuilder(builder: (context, setState) {
+                        return GridView.builder(
+                          gridDelegate:
+                              const SliverGridDelegateWithFixedCrossAxisCount(
+                                  crossAxisCount: 2, childAspectRatio: 3),
+                          itemCount: customButtonOptions.length,
+                          itemBuilder: (context, index) {
+                            String item = customButtonOptions[index];
+
+                            return ChoiceChip(
+                              labelPadding: const EdgeInsets.all(0),
+                              showCheckmark: false,
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 25, vertical: 10),
+                              label: SizedBox(
+                                  width: 90,
+                                  child: Text(
+                                    item,
+                                    textAlign: TextAlign.center,
+                                  )),
+                              selected: choiceChipValue == index,
+                              onSelected: (bool selected) {
+                                setState(() {
+                                  if (selected) {
+                                    choiceChipValue = selected ? index : index;
+                                  }
+                                });
+                              },
+                              backgroundColor: choiceChipValue == index
+                                  ? blueColor
+                                  : lightButtonBlue,
+                              selectedColor: blueColor,
+                              labelStyle: TextStyle(
+                                color: choiceChipValue == index
+                                    ? Colors.white
+                                    : blueColor,
+                              ),
+                            );
+                          },
+                        );
+                      }),
                     ),
                     if (isFullyPortrait) ...<Widget>[
                       Expanded(child: picker),
+                      const Divider(
+                        color: dividerGreyColor,
+                      ),
                       actions,
                     ],
                   ],
@@ -3247,9 +3297,11 @@ class _InputDateRangePickerState extends State<_InputDateRangePicker> {
     );
   }
 }
+
 // Copyright 2014 The Flutter Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 const double _dayPickerRowHeight = 42.0;
 const int _maxDayPickerRowCount = 6; // A 31 day month that starts on Saturday.
@@ -3545,21 +3597,20 @@ class _CalendarDatePickerState extends State<CalendarDatePicker> {
     assert(debugCheckHasDirectionality(context));
     return Stack(
       children: <Widget>[
-        Padding(
-          padding: const EdgeInsets.only(left: 90, top: 2),
-          child: _DatePickerModeToggleButton(
-            mode: _mode,
-            title: _localizations.formatMonthYear(_currentDisplayedMonthDate),
-            onTitlePressed: () {
-              // Toggle the day/year mode.
-              _handleModeChanged(_mode == DatePickerMode.day
-                  ? DatePickerMode.year
-                  : DatePickerMode.day);
-            },
-          ),
+        _DatePickerModeToggleButton(
+          mode: _mode,
+          title: _localizations.formatMonthYear(_currentDisplayedMonthDate),
+          onTitlePressed: () {
+            // Toggle the day/year mode.
+            _handleModeChanged(_mode == DatePickerMode.day
+                ? DatePickerMode.year
+                : DatePickerMode.day);
+          },
         ),
-        _buildPicker(),
-
+        SizedBox(
+          height: _subHeaderHeight + _maxDayPickerHeight,
+          child: _buildPicker(),
+        ),
         // Put the mode toggle button on top so that it won't be covered up by the _MonthPicker
       ],
     );
@@ -3623,25 +3674,43 @@ class _DatePickerModeToggleButtonState
 
   @override
   Widget build(BuildContext context) {
+    // final ColorScheme colorScheme = Theme.of(context).colorScheme;
+    // final TextTheme textTheme = Theme.of(context).textTheme;
+    // final Color controlColor = colorScheme.onSurface.withOpacity(1);
+
     return Container(
-      padding: const EdgeInsetsDirectional.only(start: 16, end: 4),
+      padding: const EdgeInsets.only(top: 5),
       height: _subHeaderHeight,
       child: Row(
         children: <Widget>[
           Flexible(
-            child: InkWell(
-              onTap: widget.onTitlePressed,
-              child: Flexible(
-                child: Text(widget.title ?? "",
-                    overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(
-                        fontSize: 17, fontWeight: FontWeight.w500)),
+            child: Semantics(
+              label: MaterialLocalizations.of(context).selectYearSemanticsLabel,
+              excludeSemantics: true,
+              button: true,
+              child: SizedBox(
+                height: _subHeaderHeight,
+                child: InkWell(
+                  onTap: widget.onTitlePressed,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Flexible(
+                        child: Text(widget.title ?? "",
+                            overflow: TextOverflow.ellipsis,
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(
+                                fontSize: 18, fontWeight: FontWeight.w500)),
+                      ),
+                    ],
+                  ),
+                ),
               ),
             ),
           ),
-          if (widget.mode == DatePickerMode.day)
-            // Give space for the prev/next month buttons that are underneath this row
-            const SizedBox(width: _monthNavButtonsWidth),
+          // if (widget.mode == DatePickerMode.day)
+          //   // Give space for the prev/next month buttons that are underneath this row
+          //   const SizedBox(width: _monthNavButtonsWidth),
         ],
       ),
     );
@@ -3978,41 +4047,38 @@ class _MonthPickerState extends State<_MonthPicker> {
 
     return Column(
       children: <Widget>[
-        Container(
-          padding: const EdgeInsetsDirectional.only(start: 16, end: 4),
+        SizedBox(
           height: _subHeaderHeight,
-          child: Padding(
-            padding: const EdgeInsets.only(left: 30),
-            child: Row(
-              children: <Widget>[
-                IconButton(
-                  icon: const Icon(
-                    Icons.arrow_left_rounded,
-                    size: 40,
-                  ),
-                  color: controlColor,
-                  tooltip: _isDisplayingFirstMonth
-                      ? null
-                      : _localizations.previousMonthTooltip,
-                  onPressed:
-                      _isDisplayingFirstMonth ? null : _handlePreviousMonth,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              IconButton(
+                icon: const Icon(
+                  Icons.arrow_left_rounded,
+                  size: 40,
                 ),
-                const SizedBox(
-                  width: 120,
+                color: controlColor,
+                tooltip: _isDisplayingFirstMonth
+                    ? null
+                    : _localizations.previousMonthTooltip,
+                onPressed:
+                    _isDisplayingFirstMonth ? null : _handlePreviousMonth,
+              ),
+              const SizedBox(
+                width: 120,
+              ),
+              IconButton(
+                icon: const Icon(
+                  Icons.arrow_right_rounded,
+                  size: 40,
                 ),
-                IconButton(
-                  icon: const Icon(
-                    Icons.arrow_right_rounded,
-                    size: 40,
-                  ),
-                  color: controlColor,
-                  tooltip: _isDisplayingLastMonth
-                      ? null
-                      : _localizations.nextMonthTooltip,
-                  onPressed: _isDisplayingLastMonth ? null : _handleNextMonth,
-                ),
-              ],
-            ),
+                color: controlColor,
+                tooltip: _isDisplayingLastMonth
+                    ? null
+                    : _localizations.nextMonthTooltip,
+                onPressed: _isDisplayingLastMonth ? null : _handleNextMonth,
+              ),
+            ],
           ),
         ),
         Expanded(

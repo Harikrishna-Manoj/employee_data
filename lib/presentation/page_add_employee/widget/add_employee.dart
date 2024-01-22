@@ -26,6 +26,7 @@ class DataTextField extends StatelessWidget {
       key: formKey,
       child: TextFormField(
         controller: controller,
+        readOnly: isVisible,
         inputFormatters: [
           FilteringTextInputFormatter.allow(RegExp("[a-z A-Z.]")),
         ],
@@ -111,8 +112,9 @@ class DatePickeCalendar extends StatelessWidget {
               prefixIcon: IconButton(
                 onPressed: () {
                   showCustomDatePicker(
+                    isDateStartingCalendar: true,
                     fieldLabelText: "hwll",
-                    // initialEntryMode: DatePickerEntryMode.calendarOnly,
+                    initialEntryMode: DatePickerEntryMode.calendarOnly,
                     confirmText: "Save",
                     initialDate: DateTime.now(),
                     context: context,
@@ -150,7 +152,18 @@ class DatePickeCalendar extends StatelessWidget {
             readOnly: true,
             decoration: InputDecoration(
               prefixIcon: IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  showCustomDatePicker(
+                    isDateStartingCalendar: false,
+                    fieldLabelText: "hwll",
+                    // initialEntryMode: DatePickerEntryMode.calendarOnly,
+                    confirmText: "Save",
+                    initialDate: DateTime.now(),
+                    context: context,
+                    firstDate: DateTime(2000),
+                    lastDate: DateTime(2050),
+                  );
+                },
                 icon: const Icon(
                   Icons.calendar_today_outlined,
                   color: blueColor,
