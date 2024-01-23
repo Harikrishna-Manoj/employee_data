@@ -644,6 +644,20 @@ class _DatePickerDialogState extends State<DatePickerDialog>
       );
     }
 
+    void _handleToday() {
+      if (_entryMode.value == DatePickerEntryMode.input ||
+          _entryMode.value == DatePickerEntryMode.inputOnly) {
+        final FormState form = _formKey.currentState!;
+        if (!form.validate()) {
+          setState(() => _autovalidateMode.value = AutovalidateMode.always);
+          return;
+        }
+        form.save();
+      }
+      print(_selectedDate.value);
+      // Navigator.pop(context, _selectedDate.value);
+    }
+
     final Widget picker;
     final Widget? entryModeButton;
     switch (_entryMode.value) {
@@ -752,6 +766,19 @@ class _DatePickerDialogState extends State<DatePickerDialog>
                                 setState(() {
                                   if (selected) {
                                     choiceChipValue = selected ? index : index;
+                                    switch (widget.isDateStartingCalendar) {
+                                      case true:
+                                        if (choiceChipValue == 0) {
+                                          _handleToday();
+                                        } else if (choiceChipValue == 1) {
+                                        } else if (choiceChipValue == 2) {
+                                        } else if (choiceChipValue == 4) {}
+                                        break;
+                                      case false:
+                                        if (choiceChipValue == 0) {
+                                        } else if (choiceChipValue == 1) {}
+                                      default:
+                                    }
                                   }
                                 });
                               },

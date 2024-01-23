@@ -152,8 +152,8 @@ class DatePickeCalendar extends StatelessWidget {
             readOnly: true,
             decoration: InputDecoration(
               prefixIcon: IconButton(
-                onPressed: () {
-                  showCustomDatePicker(
+                onPressed: () async {
+                  DateTime? pickedDate = await showCustomDatePicker(
                     isDateStartingCalendar: false,
                     fieldLabelText: "hwll",
                     // initialEntryMode: DatePickerEntryMode.calendarOnly,
@@ -163,6 +163,9 @@ class DatePickeCalendar extends StatelessWidget {
                     firstDate: DateTime(2000),
                     lastDate: DateTime(2050),
                   );
+                  if (pickedDate != null) {
+                    print("${pickedDate.day}");
+                  }
                 },
                 icon: const Icon(
                   Icons.calendar_today_outlined,
