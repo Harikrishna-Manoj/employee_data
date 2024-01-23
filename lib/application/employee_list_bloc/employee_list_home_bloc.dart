@@ -16,7 +16,6 @@ class EmployeeListHomeBloc
           await DataBaseService.fetchEmployeeData();
       List<EmployeeModelData> currentEmployeeList = [];
       List<EmployeeModelData> previousEmployeeList = [];
-      print(allEmployeeList.first.employeeName.toString());
       for (var element in allEmployeeList) {
         if (element.resignDate == "No date") {
           currentEmployeeList.add(element);
@@ -24,12 +23,15 @@ class EmployeeListHomeBloc
           previousEmployeeList.add(element);
         }
       }
-      print("$currentEmployeeList currentEmployeeList");
-      print("$previousEmployeeList previousEmployeeList");
+
       await Future.delayed(const Duration(milliseconds: 1200));
       emit(Fetched(
           currentEmployeeList: currentEmployeeList,
           previousEmployeeList: previousEmployeeList));
+    });
+    on<DeleteEmployee>((event, emit) {
+      DataBaseService.deleteEmployee(event.employeeId);
+      add(const FetchEmployees());
     });
   }
 }

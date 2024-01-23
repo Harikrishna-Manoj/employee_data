@@ -549,7 +549,7 @@ class _DatePickerDialogState extends State<DatePickerDialog>
     final Color? headerForegroundColor =
         datePickerTheme.headerForegroundColor ?? defaults.headerForegroundColor;
     headlineStyle = headlineStyle?.copyWith(color: headerForegroundColor);
-    final Widget bottomDate =
+    Widget bottomDate =
         Text(localizations.formatMediumDate(_selectedDate.value!));
 
     final Widget actions = Container(
@@ -655,7 +655,7 @@ class _DatePickerDialogState extends State<DatePickerDialog>
         form.save();
       }
       print(_selectedDate.value);
-      // Navigator.pop(context, _selectedDate.value);
+      Navigator.pop(context, _selectedDate.value);
     }
 
     final Widget picker;
@@ -771,12 +771,44 @@ class _DatePickerDialogState extends State<DatePickerDialog>
                                         if (choiceChipValue == 0) {
                                           _handleToday();
                                         } else if (choiceChipValue == 1) {
+                                          DateTime date = DateTime.now();
+                                          int daysUntilMonday =
+                                              DateTime.monday - date.weekday;
+
+                                          daysUntilMonday =
+                                              (daysUntilMonday >= 0)
+                                                  ? daysUntilMonday
+                                                  : (7 + daysUntilMonday);
+
+                                          DateTime nextMonday = date.add(
+                                              Duration(days: daysUntilMonday));
+
+                                          Navigator.pop(context, nextMonday);
                                         } else if (choiceChipValue == 2) {
-                                        } else if (choiceChipValue == 4) {}
+                                          DateTime date = DateTime.now();
+                                          int daysUntilTuesday =
+                                              DateTime.tuesday - date.weekday;
+
+                                          daysUntilTuesday =
+                                              (daysUntilTuesday >= 0)
+                                                  ? daysUntilTuesday
+                                                  : (7 + daysUntilTuesday);
+
+                                          DateTime nextTuesday = date.add(
+                                              Duration(days: daysUntilTuesday));
+                                          Navigator.pop(context, nextTuesday);
+                                        } else if (choiceChipValue == 3) {
+                                          DateTime date = DateTime.now();
+                                          DateTime afterOneWeek =
+                                              date.add(Duration(days: 7));
+                                          Navigator.pop(context, afterOneWeek);
+                                        }
                                         break;
                                       case false:
                                         if (choiceChipValue == 0) {
-                                        } else if (choiceChipValue == 1) {}
+                                        } else if (choiceChipValue == 1) {
+                                          _handleToday();
+                                        }
                                       default:
                                     }
                                   }

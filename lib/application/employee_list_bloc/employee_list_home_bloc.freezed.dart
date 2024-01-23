@@ -19,32 +19,38 @@ mixin _$EmployeeListHomeEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() fetchEmployees,
+    required TResult Function(int employeeId) deleteEmployee,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? fetchEmployees,
+    TResult? Function(int employeeId)? deleteEmployee,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? fetchEmployees,
+    TResult Function(int employeeId)? deleteEmployee,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(FetchEmployees value) fetchEmployees,
+    required TResult Function(DeleteEmployee value) deleteEmployee,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(FetchEmployees value)? fetchEmployees,
+    TResult? Function(DeleteEmployee value)? deleteEmployee,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(FetchEmployees value)? fetchEmployees,
+    TResult Function(DeleteEmployee value)? deleteEmployee,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -108,6 +114,7 @@ class _$FetchEmployeesImpl implements FetchEmployees {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() fetchEmployees,
+    required TResult Function(int employeeId) deleteEmployee,
   }) {
     return fetchEmployees();
   }
@@ -116,6 +123,7 @@ class _$FetchEmployeesImpl implements FetchEmployees {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? fetchEmployees,
+    TResult? Function(int employeeId)? deleteEmployee,
   }) {
     return fetchEmployees?.call();
   }
@@ -124,6 +132,7 @@ class _$FetchEmployeesImpl implements FetchEmployees {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? fetchEmployees,
+    TResult Function(int employeeId)? deleteEmployee,
     required TResult orElse(),
   }) {
     if (fetchEmployees != null) {
@@ -136,6 +145,7 @@ class _$FetchEmployeesImpl implements FetchEmployees {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(FetchEmployees value) fetchEmployees,
+    required TResult Function(DeleteEmployee value) deleteEmployee,
   }) {
     return fetchEmployees(this);
   }
@@ -144,6 +154,7 @@ class _$FetchEmployeesImpl implements FetchEmployees {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(FetchEmployees value)? fetchEmployees,
+    TResult? Function(DeleteEmployee value)? deleteEmployee,
   }) {
     return fetchEmployees?.call(this);
   }
@@ -152,6 +163,7 @@ class _$FetchEmployeesImpl implements FetchEmployees {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(FetchEmployees value)? fetchEmployees,
+    TResult Function(DeleteEmployee value)? deleteEmployee,
     required TResult orElse(),
   }) {
     if (fetchEmployees != null) {
@@ -163,6 +175,141 @@ class _$FetchEmployeesImpl implements FetchEmployees {
 
 abstract class FetchEmployees implements EmployeeListHomeEvent {
   const factory FetchEmployees() = _$FetchEmployeesImpl;
+}
+
+/// @nodoc
+abstract class _$$DeleteEmployeeImplCopyWith<$Res> {
+  factory _$$DeleteEmployeeImplCopyWith(_$DeleteEmployeeImpl value,
+          $Res Function(_$DeleteEmployeeImpl) then) =
+      __$$DeleteEmployeeImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int employeeId});
+}
+
+/// @nodoc
+class __$$DeleteEmployeeImplCopyWithImpl<$Res>
+    extends _$EmployeeListHomeEventCopyWithImpl<$Res, _$DeleteEmployeeImpl>
+    implements _$$DeleteEmployeeImplCopyWith<$Res> {
+  __$$DeleteEmployeeImplCopyWithImpl(
+      _$DeleteEmployeeImpl _value, $Res Function(_$DeleteEmployeeImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? employeeId = null,
+  }) {
+    return _then(_$DeleteEmployeeImpl(
+      null == employeeId
+          ? _value.employeeId
+          : employeeId // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$DeleteEmployeeImpl implements DeleteEmployee {
+  const _$DeleteEmployeeImpl(this.employeeId);
+
+  @override
+  final int employeeId;
+
+  @override
+  String toString() {
+    return 'EmployeeListHomeEvent.deleteEmployee(employeeId: $employeeId)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DeleteEmployeeImpl &&
+            (identical(other.employeeId, employeeId) ||
+                other.employeeId == employeeId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, employeeId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$DeleteEmployeeImplCopyWith<_$DeleteEmployeeImpl> get copyWith =>
+      __$$DeleteEmployeeImplCopyWithImpl<_$DeleteEmployeeImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() fetchEmployees,
+    required TResult Function(int employeeId) deleteEmployee,
+  }) {
+    return deleteEmployee(employeeId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? fetchEmployees,
+    TResult? Function(int employeeId)? deleteEmployee,
+  }) {
+    return deleteEmployee?.call(employeeId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? fetchEmployees,
+    TResult Function(int employeeId)? deleteEmployee,
+    required TResult orElse(),
+  }) {
+    if (deleteEmployee != null) {
+      return deleteEmployee(employeeId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(FetchEmployees value) fetchEmployees,
+    required TResult Function(DeleteEmployee value) deleteEmployee,
+  }) {
+    return deleteEmployee(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(FetchEmployees value)? fetchEmployees,
+    TResult? Function(DeleteEmployee value)? deleteEmployee,
+  }) {
+    return deleteEmployee?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(FetchEmployees value)? fetchEmployees,
+    TResult Function(DeleteEmployee value)? deleteEmployee,
+    required TResult orElse(),
+  }) {
+    if (deleteEmployee != null) {
+      return deleteEmployee(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class DeleteEmployee implements EmployeeListHomeEvent {
+  const factory DeleteEmployee(final int employeeId) = _$DeleteEmployeeImpl;
+
+  int get employeeId;
+  @JsonKey(ignore: true)
+  _$$DeleteEmployeeImplCopyWith<_$DeleteEmployeeImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc

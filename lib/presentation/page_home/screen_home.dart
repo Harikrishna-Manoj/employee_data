@@ -10,7 +10,7 @@ class ScreenHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
       BlocProvider.of<EmployeeListHomeBloc>(context)
           .add(const EmployeeListHomeEvent.fetchEmployees());
     });
@@ -58,8 +58,21 @@ class ScreenHome extends StatelessWidget {
                     fetched: (currentEmployeeList, previousEmployeeList) {
                       return currentEmployeeList.isEmpty &&
                               previousEmployeeList.isEmpty
-                          ? Center(
-                              child: Image.asset("assets/images/no_data.png"),
+                          ? Padding(
+                              padding: const EdgeInsets.only(bottom: 80),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Image.asset("assets/images/no_data.png"),
+                                  const Text(
+                                    "No employee recorda found",
+                                    style: TextStyle(
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.w500),
+                                  )
+                                ],
+                              ),
                             )
                           : Column(
                               children: [
@@ -70,27 +83,56 @@ class ScreenHome extends StatelessWidget {
                                     title: "Current employees",
                                   ),
                                 ),
-                                Expanded(
-                                  child: ListView.separated(
-                                      shrinkWrap: true,
-                                      physics: const BouncingScrollPhysics(),
-                                      itemBuilder: (context, index) {
-                                        return EmployeeDetailTitle(
-                                            size: size,
-                                            employeeName:
-                                                currentEmployeeList[index]
-                                                    .employeeName!,
-                                            employeeWorkingDomain:
-                                                currentEmployeeList[index]
-                                                    .role!,
-                                            employeeWorkingPeriod:
-                                                "From ${currentEmployeeList[index].joinDate!}");
-                                      },
-                                      separatorBuilder: (context, index) =>
-                                          const Divider(
-                                              color: dividerGreyColor),
-                                      itemCount: currentEmployeeList.length),
-                                ),
+                                previousEmployeeList.isEmpty
+                                    ? ListView.separated(
+                                        shrinkWrap: true,
+                                        physics: const BouncingScrollPhysics(),
+                                        itemBuilder: (context, index) {
+                                          return EmployeeDetailTitle(
+                                              index: index,
+                                              employeeDataList:
+                                                  currentEmployeeList,
+                                              size: size,
+                                              employeeName:
+                                                  currentEmployeeList[index]
+                                                      .employeeName!,
+                                              employeeWorkingDomain:
+                                                  currentEmployeeList[index]
+                                                      .role!,
+                                              employeeWorkingPeriod:
+                                                  "From ${currentEmployeeList[index].joinDate!}");
+                                        },
+                                        separatorBuilder: (context, index) =>
+                                            const Divider(
+                                                color: dividerGreyColor),
+                                        itemCount: currentEmployeeList.length)
+                                    : Expanded(
+                                        child: ListView.separated(
+                                            shrinkWrap: true,
+                                            physics:
+                                                const BouncingScrollPhysics(),
+                                            itemBuilder: (context, index) {
+                                              return EmployeeDetailTitle(
+                                                  index: index,
+                                                  employeeDataList:
+                                                      currentEmployeeList,
+                                                  size: size,
+                                                  employeeName:
+                                                      currentEmployeeList[index]
+                                                          .employeeName!,
+                                                  employeeWorkingDomain:
+                                                      currentEmployeeList[index]
+                                                          .role!,
+                                                  employeeWorkingPeriod:
+                                                      "From ${currentEmployeeList[index].joinDate!}");
+                                            },
+                                            separatorBuilder: (context,
+                                                    index) =>
+                                                const Divider(
+                                                    color: dividerGreyColor),
+                                            itemCount:
+                                                currentEmployeeList.length),
+                                      ),
                                 Visibility(
                                   visible: previousEmployeeList.isNotEmpty,
                                   child: EmployeeCategoriesTitle(
@@ -101,6 +143,9 @@ class ScreenHome extends StatelessWidget {
                                       physics: const BouncingScrollPhysics(),
                                       itemBuilder: (context, index) =>
                                           EmployeeDetailTitle(
+                                              index: index,
+                                              employeeDataList:
+                                                  previousEmployeeList,
                                               size: size,
                                               employeeName:
                                                   previousEmployeeList[index]
@@ -136,7 +181,7 @@ class ScreenHome extends StatelessWidget {
           backgroundColor: blueColor,
           elevation: 0,
           onPressed: () => Navigator.of(context).push(MaterialPageRoute(
-            builder: (context) => const ScreenAddEmployee(isAddingScreen: true),
+            builder: (context) => const ScreenAddEmployee(),
           )),
           child: const Icon(
             Icons.add,

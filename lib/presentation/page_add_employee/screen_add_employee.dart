@@ -3,8 +3,9 @@ import 'package:employee_data/presentation/page_add_employee/widget/add_employee
 import 'package:flutter/material.dart';
 
 class ScreenAddEmployee extends StatelessWidget {
-  const ScreenAddEmployee({super.key, required this.isAddingScreen});
-  final bool isAddingScreen;
+  const ScreenAddEmployee({super.key, this.id});
+
+  final int? id;
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.sizeOf(context);
@@ -18,21 +19,11 @@ class ScreenAddEmployee extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: Text(
-          isAddingScreen ? "Add Employee Details" : "Edit Employee Details",
-          style: const TextStyle(
+        title: const Text(
+          "Add Employee Details",
+          style: TextStyle(
               color: whiteColor, fontSize: 18, fontWeight: FontWeight.w500),
         ),
-        actions: [
-          Visibility(
-              visible: !isAddingScreen,
-              child: IconButton(
-                  onPressed: () {},
-                  icon: const Icon(
-                    Icons.delete_outline_rounded,
-                    color: Colors.white,
-                  )))
-        ],
         backgroundColor: blueColor,
       ),
       body: SafeArea(
@@ -96,7 +87,6 @@ class ScreenAddEmployee extends StatelessWidget {
               joinDateController: joinDateController,
               resignDateController: resignDateController,
               isSaveButton: true,
-              isSavepage: isAddingScreen,
               formKey1: formKey1,
               formKey2: formKey2,
               text: "Save",

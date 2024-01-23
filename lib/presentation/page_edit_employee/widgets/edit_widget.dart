@@ -19,17 +19,18 @@ class DataTextField extends StatelessWidget {
     required this.textFieldPrefixIcon,
     required this.controller,
     required this.formKey,
+    this.oldValue,
   });
   final bool isVisible;
   final String hintString;
   final Icon textFieldPrefixIcon;
   final TextEditingController controller;
   final GlobalKey<FormState> formKey;
-
+  final String? oldValue;
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.sizeOf(context);
-
+    controller.text = oldValue ?? "jh";
     return Form(
       key: formKey,
       child: TextFormField(
@@ -102,18 +103,23 @@ class DataTextField extends StatelessWidget {
 }
 
 class DatePickeCalendar extends StatelessWidget {
-  const DatePickeCalendar({
-    super.key,
-    required this.size,
-    required this.joinDateController,
-    required this.resignDateController,
-  });
+  const DatePickeCalendar(
+      {super.key,
+      required this.size,
+      required this.joinDateController,
+      required this.resignDateController,
+      required this.oldJoinDate,
+      required this.oldResignDate});
 
   final Size size;
   final TextEditingController joinDateController;
   final TextEditingController resignDateController;
+  final String oldJoinDate;
+  final String oldResignDate;
   @override
   Widget build(BuildContext context) {
+    joinDateController.text = oldJoinDate;
+    resignDateController.text = oldResignDate;
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -224,10 +230,12 @@ class CustomButton extends StatelessWidget {
     this.formKey1,
     this.formKey2,
     required this.isSaveButton,
+    this.isSavepage,
     this.nameController,
     this.roleController,
     this.joinDateController,
     this.resignDateController,
+    required this.id,
   });
   final String text;
   final Color buttonColor;
@@ -235,11 +243,12 @@ class CustomButton extends StatelessWidget {
   final GlobalKey<FormState>? formKey1;
   final GlobalKey<FormState>? formKey2;
   final bool isSaveButton;
-
+  final bool? isSavepage;
   final TextEditingController? nameController;
   final TextEditingController? roleController;
   final TextEditingController? joinDateController;
   final TextEditingController? resignDateController;
+  final int id;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -255,6 +264,7 @@ class CustomButton extends StatelessWidget {
             if (formKey1!.currentState!.validate() &&
                 formKey2!.currentState!.validate()) {
               EmployeeModelData data = EmployeeModelData(
+                  id: id,
                   employeeName: nameController?.text.trim() ?? "",
                   role: roleController?.text.trim() ?? "",
                   joinDate: joinDateController?.text.trim() == ""
@@ -265,10 +275,10 @@ class CustomButton extends StatelessWidget {
                       : resignDateController?.text.trim());
               context
                   .read<AddEmployeeBloc>()
-                  .add(AddEmployeeEvent.addEmployee(data));
+                  .add(AddEmployeeEvent.editEmployee(data));
               ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                   content: Text(
-                    "Added",
+                    "Updated",
                     style: TextStyle(color: blueColor),
                   ),
                   dismissDirection: DismissDirection.down,

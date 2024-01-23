@@ -1,5 +1,6 @@
 import 'package:employee_data/core/constant.dart';
-import 'package:employee_data/presentation/page_add_employee/screen_add_employee.dart';
+import 'package:employee_data/domain/database_model/database_model.dart';
+import 'package:employee_data/presentation/page_edit_employee/screen_edit_employee.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 
@@ -10,12 +11,16 @@ class EmployeeDetailTitle extends StatelessWidget {
     required this.employeeName,
     required this.employeeWorkingDomain,
     required this.employeeWorkingPeriod,
+    required this.employeeDataList,
+    required this.index,
   });
 
   final Size size;
   final String employeeName;
   final String employeeWorkingDomain;
   final String employeeWorkingPeriod;
+  final List<EmployeeModelData> employeeDataList;
+  final int index;
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +29,7 @@ class EmployeeDetailTitle extends StatelessWidget {
           context,
           MaterialPageRoute(
             builder: (context) =>
-                const ScreenAddEmployee(isAddingScreen: false),
+                ScreenEdiEmployee(id: employeeDataList[index].id),
           )),
       child: Slidable(
         endActionPane: ActionPane(motion: const StretchMotion(), children: [

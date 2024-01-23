@@ -9,16 +9,16 @@ part 'add_employee_bloc.freezed.dart';
 
 class AddEmployeeBloc extends Bloc<AddEmployeeEvent, AddEmployeeState> {
   AddEmployeeBloc() : super(const _Initial()) {
-    on<_AddEmployee>((event, emit) async {
+    on<AddEmployee>((event, emit) async {
       int uniqueId = DateTime.now().millisecondsSinceEpoch;
-      final EmployeeModelData employeeData = EmployeeModelData(
-          id: uniqueId,
-          employeeName: event.employeeData?.employeeName,
-          role: event.employeeData?.role,
-          joinDate: event.employeeData?.joinDate,
-          resignDate: event.employeeData?.resignDate);
+      event.employeeData?.id = uniqueId;
+      final employeeData = event.employeeData;
       // ignore: unused_local_variable
-      int id = await DataBaseService.addEmployeeData(employeeData);
+      await DataBaseService.addEmployeeData(employeeData!);
+    });
+    on<EditEmployee>((event, emit) async {
+      final employeeData = event.employeeData;
+      await DataBaseService.updateEmployeeData(employeeData!);
     });
   }
 }

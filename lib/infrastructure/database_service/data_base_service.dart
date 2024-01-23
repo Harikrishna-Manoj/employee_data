@@ -17,4 +17,28 @@ class DataBaseService {
     List<EmployeeModelData> employeeDataList = [...employeeBox.values];
     return employeeDataList;
   }
+
+  static deleteEmployee(int employeeId) async {
+    final Box employeeBox = await Hive.openBox<EmployeeModelData>("employee");
+    List<EmployeeModelData> employeeDataList = [...employeeBox.values];
+    int index =
+        employeeDataList.indexWhere((element) => element.id! == employeeId);
+    employeeBox.deleteAt(index);
+  }
+
+  static Future<EmployeeModelData> fetchDataForUpdation(int employeeId) async {
+    final Box employeeBox = await Hive.openBox<EmployeeModelData>("employee");
+    List<EmployeeModelData> employeeDataList = [...employeeBox.values];
+    EmployeeModelData employeeData =
+        employeeDataList.firstWhere((element) => element.id == employeeId);
+    return employeeData;
+  }
+
+  static updateEmployeeData(EmployeeModelData employeeModelData) async {
+    final Box employeeBox = await Hive.openBox<EmployeeModelData>("employee");
+    List<EmployeeModelData> employeeDataList = [...employeeBox.values];
+    int index = employeeDataList
+        .indexWhere((element) => element.id == employeeModelData.id);
+    employeeBox.putAt(index, employeeModelData);
+  }
 }

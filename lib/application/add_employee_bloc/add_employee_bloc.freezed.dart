@@ -20,32 +20,38 @@ mixin _$AddEmployeeEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(EmployeeModelData? employeeData) addEmployee,
+    required TResult Function(EmployeeModelData? employeeData) editEmployee,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(EmployeeModelData? employeeData)? addEmployee,
+    TResult? Function(EmployeeModelData? employeeData)? editEmployee,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(EmployeeModelData? employeeData)? addEmployee,
+    TResult Function(EmployeeModelData? employeeData)? editEmployee,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_AddEmployee value) addEmployee,
+    required TResult Function(AddEmployee value) addEmployee,
+    required TResult Function(EditEmployee value) editEmployee,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_AddEmployee value)? addEmployee,
+    TResult? Function(AddEmployee value)? addEmployee,
+    TResult? Function(EditEmployee value)? editEmployee,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_AddEmployee value)? addEmployee,
+    TResult Function(AddEmployee value)? addEmployee,
+    TResult Function(EditEmployee value)? editEmployee,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -123,7 +129,7 @@ class __$$AddEmployeeImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$AddEmployeeImpl implements _AddEmployee {
+class _$AddEmployeeImpl implements AddEmployee {
   const _$AddEmployeeImpl(this.employeeData);
 
   @override
@@ -156,6 +162,7 @@ class _$AddEmployeeImpl implements _AddEmployee {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(EmployeeModelData? employeeData) addEmployee,
+    required TResult Function(EmployeeModelData? employeeData) editEmployee,
   }) {
     return addEmployee(employeeData);
   }
@@ -164,6 +171,7 @@ class _$AddEmployeeImpl implements _AddEmployee {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(EmployeeModelData? employeeData)? addEmployee,
+    TResult? Function(EmployeeModelData? employeeData)? editEmployee,
   }) {
     return addEmployee?.call(employeeData);
   }
@@ -172,6 +180,7 @@ class _$AddEmployeeImpl implements _AddEmployee {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(EmployeeModelData? employeeData)? addEmployee,
+    TResult Function(EmployeeModelData? employeeData)? editEmployee,
     required TResult orElse(),
   }) {
     if (addEmployee != null) {
@@ -183,7 +192,8 @@ class _$AddEmployeeImpl implements _AddEmployee {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_AddEmployee value) addEmployee,
+    required TResult Function(AddEmployee value) addEmployee,
+    required TResult Function(EditEmployee value) editEmployee,
   }) {
     return addEmployee(this);
   }
@@ -191,7 +201,8 @@ class _$AddEmployeeImpl implements _AddEmployee {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_AddEmployee value)? addEmployee,
+    TResult? Function(AddEmployee value)? addEmployee,
+    TResult? Function(EditEmployee value)? editEmployee,
   }) {
     return addEmployee?.call(this);
   }
@@ -199,7 +210,8 @@ class _$AddEmployeeImpl implements _AddEmployee {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_AddEmployee value)? addEmployee,
+    TResult Function(AddEmployee value)? addEmployee,
+    TResult Function(EditEmployee value)? editEmployee,
     required TResult orElse(),
   }) {
     if (addEmployee != null) {
@@ -209,8 +221,8 @@ class _$AddEmployeeImpl implements _AddEmployee {
   }
 }
 
-abstract class _AddEmployee implements AddEmployeeEvent {
-  const factory _AddEmployee(final EmployeeModelData? employeeData) =
+abstract class AddEmployee implements AddEmployeeEvent {
+  const factory AddEmployee(final EmployeeModelData? employeeData) =
       _$AddEmployeeImpl;
 
   @override
@@ -218,6 +230,145 @@ abstract class _AddEmployee implements AddEmployeeEvent {
   @override
   @JsonKey(ignore: true)
   _$$AddEmployeeImplCopyWith<_$AddEmployeeImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$EditEmployeeImplCopyWith<$Res>
+    implements $AddEmployeeEventCopyWith<$Res> {
+  factory _$$EditEmployeeImplCopyWith(
+          _$EditEmployeeImpl value, $Res Function(_$EditEmployeeImpl) then) =
+      __$$EditEmployeeImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({EmployeeModelData? employeeData});
+}
+
+/// @nodoc
+class __$$EditEmployeeImplCopyWithImpl<$Res>
+    extends _$AddEmployeeEventCopyWithImpl<$Res, _$EditEmployeeImpl>
+    implements _$$EditEmployeeImplCopyWith<$Res> {
+  __$$EditEmployeeImplCopyWithImpl(
+      _$EditEmployeeImpl _value, $Res Function(_$EditEmployeeImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? employeeData = freezed,
+  }) {
+    return _then(_$EditEmployeeImpl(
+      freezed == employeeData
+          ? _value.employeeData
+          : employeeData // ignore: cast_nullable_to_non_nullable
+              as EmployeeModelData?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$EditEmployeeImpl implements EditEmployee {
+  const _$EditEmployeeImpl(this.employeeData);
+
+  @override
+  final EmployeeModelData? employeeData;
+
+  @override
+  String toString() {
+    return 'AddEmployeeEvent.editEmployee(employeeData: $employeeData)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$EditEmployeeImpl &&
+            (identical(other.employeeData, employeeData) ||
+                other.employeeData == employeeData));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, employeeData);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$EditEmployeeImplCopyWith<_$EditEmployeeImpl> get copyWith =>
+      __$$EditEmployeeImplCopyWithImpl<_$EditEmployeeImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(EmployeeModelData? employeeData) addEmployee,
+    required TResult Function(EmployeeModelData? employeeData) editEmployee,
+  }) {
+    return editEmployee(employeeData);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(EmployeeModelData? employeeData)? addEmployee,
+    TResult? Function(EmployeeModelData? employeeData)? editEmployee,
+  }) {
+    return editEmployee?.call(employeeData);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(EmployeeModelData? employeeData)? addEmployee,
+    TResult Function(EmployeeModelData? employeeData)? editEmployee,
+    required TResult orElse(),
+  }) {
+    if (editEmployee != null) {
+      return editEmployee(employeeData);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(AddEmployee value) addEmployee,
+    required TResult Function(EditEmployee value) editEmployee,
+  }) {
+    return editEmployee(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(AddEmployee value)? addEmployee,
+    TResult? Function(EditEmployee value)? editEmployee,
+  }) {
+    return editEmployee?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(AddEmployee value)? addEmployee,
+    TResult Function(EditEmployee value)? editEmployee,
+    required TResult orElse(),
+  }) {
+    if (editEmployee != null) {
+      return editEmployee(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class EditEmployee implements AddEmployeeEvent {
+  const factory EditEmployee(final EmployeeModelData? employeeData) =
+      _$EditEmployeeImpl;
+
+  @override
+  EmployeeModelData? get employeeData;
+  @override
+  @JsonKey(ignore: true)
+  _$$EditEmployeeImplCopyWith<_$EditEmployeeImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
