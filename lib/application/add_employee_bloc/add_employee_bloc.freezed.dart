@@ -16,49 +16,42 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$AddEmployeeEvent {
+  EmployeeModelData? get employeeData => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(EmployeeData? employeeData) addEmployee,
-    required TResult Function(String? joinDate) selecteJoinDate,
-    required TResult Function(String? resignDate) selecteResignDate,
+    required TResult Function(EmployeeModelData? employeeData) addEmployee,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(EmployeeData? employeeData)? addEmployee,
-    TResult? Function(String? joinDate)? selecteJoinDate,
-    TResult? Function(String? resignDate)? selecteResignDate,
+    TResult? Function(EmployeeModelData? employeeData)? addEmployee,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(EmployeeData? employeeData)? addEmployee,
-    TResult Function(String? joinDate)? selecteJoinDate,
-    TResult Function(String? resignDate)? selecteResignDate,
+    TResult Function(EmployeeModelData? employeeData)? addEmployee,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_AddEmployee value) addEmployee,
-    required TResult Function(_SelecteJoinDate value) selecteJoinDate,
-    required TResult Function(_SelecteResignDate value) selecteResignDate,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_AddEmployee value)? addEmployee,
-    TResult? Function(_SelecteJoinDate value)? selecteJoinDate,
-    TResult? Function(_SelecteResignDate value)? selecteResignDate,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_AddEmployee value)? addEmployee,
-    TResult Function(_SelecteJoinDate value)? selecteJoinDate,
-    TResult Function(_SelecteResignDate value)? selecteResignDate,
     required TResult orElse(),
   }) =>
+      throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $AddEmployeeEventCopyWith<AddEmployeeEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -67,6 +60,8 @@ abstract class $AddEmployeeEventCopyWith<$Res> {
   factory $AddEmployeeEventCopyWith(
           AddEmployeeEvent value, $Res Function(AddEmployeeEvent) then) =
       _$AddEmployeeEventCopyWithImpl<$Res, AddEmployeeEvent>;
+  @useResult
+  $Res call({EmployeeModelData? employeeData});
 }
 
 /// @nodoc
@@ -78,15 +73,30 @@ class _$AddEmployeeEventCopyWithImpl<$Res, $Val extends AddEmployeeEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? employeeData = freezed,
+  }) {
+    return _then(_value.copyWith(
+      employeeData: freezed == employeeData
+          ? _value.employeeData
+          : employeeData // ignore: cast_nullable_to_non_nullable
+              as EmployeeModelData?,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract class _$$AddEmployeeImplCopyWith<$Res> {
+abstract class _$$AddEmployeeImplCopyWith<$Res>
+    implements $AddEmployeeEventCopyWith<$Res> {
   factory _$$AddEmployeeImplCopyWith(
           _$AddEmployeeImpl value, $Res Function(_$AddEmployeeImpl) then) =
       __$$AddEmployeeImplCopyWithImpl<$Res>;
+  @override
   @useResult
-  $Res call({EmployeeData? employeeData});
+  $Res call({EmployeeModelData? employeeData});
 }
 
 /// @nodoc
@@ -106,7 +116,7 @@ class __$$AddEmployeeImplCopyWithImpl<$Res>
       freezed == employeeData
           ? _value.employeeData
           : employeeData // ignore: cast_nullable_to_non_nullable
-              as EmployeeData?,
+              as EmployeeModelData?,
     ));
   }
 }
@@ -117,7 +127,7 @@ class _$AddEmployeeImpl implements _AddEmployee {
   const _$AddEmployeeImpl(this.employeeData);
 
   @override
-  final EmployeeData? employeeData;
+  final EmployeeModelData? employeeData;
 
   @override
   String toString() {
@@ -145,9 +155,7 @@ class _$AddEmployeeImpl implements _AddEmployee {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(EmployeeData? employeeData) addEmployee,
-    required TResult Function(String? joinDate) selecteJoinDate,
-    required TResult Function(String? resignDate) selecteResignDate,
+    required TResult Function(EmployeeModelData? employeeData) addEmployee,
   }) {
     return addEmployee(employeeData);
   }
@@ -155,9 +163,7 @@ class _$AddEmployeeImpl implements _AddEmployee {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(EmployeeData? employeeData)? addEmployee,
-    TResult? Function(String? joinDate)? selecteJoinDate,
-    TResult? Function(String? resignDate)? selecteResignDate,
+    TResult? Function(EmployeeModelData? employeeData)? addEmployee,
   }) {
     return addEmployee?.call(employeeData);
   }
@@ -165,9 +171,7 @@ class _$AddEmployeeImpl implements _AddEmployee {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(EmployeeData? employeeData)? addEmployee,
-    TResult Function(String? joinDate)? selecteJoinDate,
-    TResult Function(String? resignDate)? selecteResignDate,
+    TResult Function(EmployeeModelData? employeeData)? addEmployee,
     required TResult orElse(),
   }) {
     if (addEmployee != null) {
@@ -180,8 +184,6 @@ class _$AddEmployeeImpl implements _AddEmployee {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_AddEmployee value) addEmployee,
-    required TResult Function(_SelecteJoinDate value) selecteJoinDate,
-    required TResult Function(_SelecteResignDate value) selecteResignDate,
   }) {
     return addEmployee(this);
   }
@@ -190,8 +192,6 @@ class _$AddEmployeeImpl implements _AddEmployee {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_AddEmployee value)? addEmployee,
-    TResult? Function(_SelecteJoinDate value)? selecteJoinDate,
-    TResult? Function(_SelecteResignDate value)? selecteResignDate,
   }) {
     return addEmployee?.call(this);
   }
@@ -200,8 +200,6 @@ class _$AddEmployeeImpl implements _AddEmployee {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_AddEmployee value)? addEmployee,
-    TResult Function(_SelecteJoinDate value)? selecteJoinDate,
-    TResult Function(_SelecteResignDate value)? selecteResignDate,
     required TResult orElse(),
   }) {
     if (addEmployee != null) {
@@ -212,295 +210,14 @@ class _$AddEmployeeImpl implements _AddEmployee {
 }
 
 abstract class _AddEmployee implements AddEmployeeEvent {
-  const factory _AddEmployee(final EmployeeData? employeeData) =
+  const factory _AddEmployee(final EmployeeModelData? employeeData) =
       _$AddEmployeeImpl;
 
-  EmployeeData? get employeeData;
+  @override
+  EmployeeModelData? get employeeData;
+  @override
   @JsonKey(ignore: true)
   _$$AddEmployeeImplCopyWith<_$AddEmployeeImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$SelecteJoinDateImplCopyWith<$Res> {
-  factory _$$SelecteJoinDateImplCopyWith(_$SelecteJoinDateImpl value,
-          $Res Function(_$SelecteJoinDateImpl) then) =
-      __$$SelecteJoinDateImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String? joinDate});
-}
-
-/// @nodoc
-class __$$SelecteJoinDateImplCopyWithImpl<$Res>
-    extends _$AddEmployeeEventCopyWithImpl<$Res, _$SelecteJoinDateImpl>
-    implements _$$SelecteJoinDateImplCopyWith<$Res> {
-  __$$SelecteJoinDateImplCopyWithImpl(
-      _$SelecteJoinDateImpl _value, $Res Function(_$SelecteJoinDateImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? joinDate = freezed,
-  }) {
-    return _then(_$SelecteJoinDateImpl(
-      freezed == joinDate
-          ? _value.joinDate
-          : joinDate // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$SelecteJoinDateImpl implements _SelecteJoinDate {
-  _$SelecteJoinDateImpl(this.joinDate);
-
-  @override
-  final String? joinDate;
-
-  @override
-  String toString() {
-    return 'AddEmployeeEvent.selecteJoinDate(joinDate: $joinDate)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$SelecteJoinDateImpl &&
-            (identical(other.joinDate, joinDate) ||
-                other.joinDate == joinDate));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, joinDate);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$SelecteJoinDateImplCopyWith<_$SelecteJoinDateImpl> get copyWith =>
-      __$$SelecteJoinDateImplCopyWithImpl<_$SelecteJoinDateImpl>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(EmployeeData? employeeData) addEmployee,
-    required TResult Function(String? joinDate) selecteJoinDate,
-    required TResult Function(String? resignDate) selecteResignDate,
-  }) {
-    return selecteJoinDate(joinDate);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(EmployeeData? employeeData)? addEmployee,
-    TResult? Function(String? joinDate)? selecteJoinDate,
-    TResult? Function(String? resignDate)? selecteResignDate,
-  }) {
-    return selecteJoinDate?.call(joinDate);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(EmployeeData? employeeData)? addEmployee,
-    TResult Function(String? joinDate)? selecteJoinDate,
-    TResult Function(String? resignDate)? selecteResignDate,
-    required TResult orElse(),
-  }) {
-    if (selecteJoinDate != null) {
-      return selecteJoinDate(joinDate);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_AddEmployee value) addEmployee,
-    required TResult Function(_SelecteJoinDate value) selecteJoinDate,
-    required TResult Function(_SelecteResignDate value) selecteResignDate,
-  }) {
-    return selecteJoinDate(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_AddEmployee value)? addEmployee,
-    TResult? Function(_SelecteJoinDate value)? selecteJoinDate,
-    TResult? Function(_SelecteResignDate value)? selecteResignDate,
-  }) {
-    return selecteJoinDate?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_AddEmployee value)? addEmployee,
-    TResult Function(_SelecteJoinDate value)? selecteJoinDate,
-    TResult Function(_SelecteResignDate value)? selecteResignDate,
-    required TResult orElse(),
-  }) {
-    if (selecteJoinDate != null) {
-      return selecteJoinDate(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _SelecteJoinDate implements AddEmployeeEvent {
-  factory _SelecteJoinDate(final String? joinDate) = _$SelecteJoinDateImpl;
-
-  String? get joinDate;
-  @JsonKey(ignore: true)
-  _$$SelecteJoinDateImplCopyWith<_$SelecteJoinDateImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$SelecteResignDateImplCopyWith<$Res> {
-  factory _$$SelecteResignDateImplCopyWith(_$SelecteResignDateImpl value,
-          $Res Function(_$SelecteResignDateImpl) then) =
-      __$$SelecteResignDateImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String? resignDate});
-}
-
-/// @nodoc
-class __$$SelecteResignDateImplCopyWithImpl<$Res>
-    extends _$AddEmployeeEventCopyWithImpl<$Res, _$SelecteResignDateImpl>
-    implements _$$SelecteResignDateImplCopyWith<$Res> {
-  __$$SelecteResignDateImplCopyWithImpl(_$SelecteResignDateImpl _value,
-      $Res Function(_$SelecteResignDateImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? resignDate = freezed,
-  }) {
-    return _then(_$SelecteResignDateImpl(
-      freezed == resignDate
-          ? _value.resignDate
-          : resignDate // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$SelecteResignDateImpl implements _SelecteResignDate {
-  _$SelecteResignDateImpl(this.resignDate);
-
-  @override
-  final String? resignDate;
-
-  @override
-  String toString() {
-    return 'AddEmployeeEvent.selecteResignDate(resignDate: $resignDate)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$SelecteResignDateImpl &&
-            (identical(other.resignDate, resignDate) ||
-                other.resignDate == resignDate));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, resignDate);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$SelecteResignDateImplCopyWith<_$SelecteResignDateImpl> get copyWith =>
-      __$$SelecteResignDateImplCopyWithImpl<_$SelecteResignDateImpl>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(EmployeeData? employeeData) addEmployee,
-    required TResult Function(String? joinDate) selecteJoinDate,
-    required TResult Function(String? resignDate) selecteResignDate,
-  }) {
-    return selecteResignDate(resignDate);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(EmployeeData? employeeData)? addEmployee,
-    TResult? Function(String? joinDate)? selecteJoinDate,
-    TResult? Function(String? resignDate)? selecteResignDate,
-  }) {
-    return selecteResignDate?.call(resignDate);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(EmployeeData? employeeData)? addEmployee,
-    TResult Function(String? joinDate)? selecteJoinDate,
-    TResult Function(String? resignDate)? selecteResignDate,
-    required TResult orElse(),
-  }) {
-    if (selecteResignDate != null) {
-      return selecteResignDate(resignDate);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_AddEmployee value) addEmployee,
-    required TResult Function(_SelecteJoinDate value) selecteJoinDate,
-    required TResult Function(_SelecteResignDate value) selecteResignDate,
-  }) {
-    return selecteResignDate(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_AddEmployee value)? addEmployee,
-    TResult? Function(_SelecteJoinDate value)? selecteJoinDate,
-    TResult? Function(_SelecteResignDate value)? selecteResignDate,
-  }) {
-    return selecteResignDate?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_AddEmployee value)? addEmployee,
-    TResult Function(_SelecteJoinDate value)? selecteJoinDate,
-    TResult Function(_SelecteResignDate value)? selecteResignDate,
-    required TResult orElse(),
-  }) {
-    if (selecteResignDate != null) {
-      return selecteResignDate(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _SelecteResignDate implements AddEmployeeEvent {
-  factory _SelecteResignDate(final String? resignDate) =
-      _$SelecteResignDateImpl;
-
-  String? get resignDate;
-  @JsonKey(ignore: true)
-  _$$SelecteResignDateImplCopyWith<_$SelecteResignDateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

@@ -1,3 +1,5 @@
+// ignore_for_file: constant_identifier_names
+
 import 'package:flutter/material.dart';
 
 const Color blueColor = Color.fromRGBO(29, 161, 242, 1);
@@ -20,3 +22,18 @@ List<String> jobRoleConstant = [
   "QA Tester",
   "Product Owner"
 ];
+
+Map<int, String> monthMap = {
+  1: 'Jan',
+  2: 'Feb',
+  3: 'Mar',
+  4: 'Apr',
+  5: 'May',
+  6: 'Jun',
+  7: 'Jul',
+  8: 'Aug',
+  9: 'Sep',
+  10: 'Oct',
+  11: 'Nov',
+  12: 'Dec',
+};

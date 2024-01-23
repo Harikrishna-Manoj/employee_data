@@ -10,6 +10,8 @@ class ScreenAddEmployee extends StatelessWidget {
     Size size = MediaQuery.sizeOf(context);
     TextEditingController employeeNameController = TextEditingController();
     TextEditingController employeeRoleController = TextEditingController();
+    TextEditingController joinDateController = TextEditingController();
+    TextEditingController resignDateController = TextEditingController();
     GlobalKey<FormState> formKey1 = GlobalKey<FormState>();
     GlobalKey<FormState> formKey2 = GlobalKey<FormState>();
 
@@ -58,7 +60,11 @@ class ScreenAddEmployee extends StatelessWidget {
               const SizedBox(
                 height: 23,
               ),
-              DatePickeCalendar(size: size),
+              DatePickeCalendar(
+                joinDateController: joinDateController,
+                resignDateController: resignDateController,
+                size: size,
+              ),
               const Spacer(),
               const Divider(
                 color: dividerGreyColor,
@@ -85,7 +91,12 @@ class ScreenAddEmployee extends StatelessWidget {
             width: 16,
           ),
           CustomButton(
+              nameController: employeeNameController,
+              roleController: employeeRoleController,
+              joinDateController: joinDateController,
+              resignDateController: resignDateController,
               isSaveButton: true,
+              isSavepage: isAddingScreen,
               formKey1: formKey1,
               formKey2: formKey2,
               text: "Save",

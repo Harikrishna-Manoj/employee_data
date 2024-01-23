@@ -1,16 +1,21 @@
+import 'dart:developer';
+import 'dart:io';
+
+import 'package:employee_data/application/add_employee_bloc/add_employee_bloc.dart';
 import 'package:employee_data/core/constant.dart';
 import 'package:employee_data/domain/database_model/database_model.dart';
 import 'package:employee_data/infrastructure/database_service/data_base_service.dart';
 import 'package:employee_data/presentation/page_home/screen_home.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:path_provider/path_provider.dart' as path;
+import 'package:path_provider/path_provider.dart';
 
 void main(List<String> args) async {
   WidgetsFlutterBinding.ensureInitialized();
-  final dataPath = await path.getApplicationDocumentsDirectory();
+  Directory dataPath = await getApplicationDocumentsDirectory();
   await Hive.initFlutter(dataPath.path);
-  Hive.registerAdapter<EmployeeData>(EmployeeDataAdapter());
+  Hive.registerAdapter<EmployeeModelData>(EmployeeModelDataAdapter());
   DataBaseService.openDataBase();
   runApp(const MyApp());
 }
@@ -20,10 +25,16 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: appThemeData,
-      home: const ScreenHome(),
-    );
+    return MultiBlocProvider(
+        providers: [
+          BlocProvider(
+            create: (context) => AddEmployeeBloc(),
+          ),
+        ],
+        child: MaterialApp(
+          debugShowCheckedModeBanner: false,
+          theme: appThemeData,
+          home: const ScreenHome(),
+        ));
   }
 }
