@@ -2,6 +2,7 @@ import 'dart:developer';
 import 'dart:io';
 
 import 'package:employee_data/application/add_employee_bloc/add_employee_bloc.dart';
+import 'package:employee_data/application/employee_list_bloc/employee_list_home_bloc.dart';
 import 'package:employee_data/core/constant.dart';
 import 'package:employee_data/domain/database_model/database_model.dart';
 import 'package:employee_data/infrastructure/database_service/data_base_service.dart';
@@ -30,6 +31,9 @@ class MyApp extends StatelessWidget {
           BlocProvider(
             create: (context) => AddEmployeeBloc(),
           ),
+          BlocProvider(
+            create: (context) => EmployeeListHomeBloc(),
+          )
         ],
         child: MaterialApp(
           debugShowCheckedModeBanner: false,

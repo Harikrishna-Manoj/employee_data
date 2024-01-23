@@ -34,17 +34,17 @@ mixin _$EmployeeListHomeEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_FetchEmployees value) fetchEmployees,
+    required TResult Function(FetchEmployees value) fetchEmployees,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_FetchEmployees value)? fetchEmployees,
+    TResult? Function(FetchEmployees value)? fetchEmployees,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_FetchEmployees value)? fetchEmployees,
+    TResult Function(FetchEmployees value)? fetchEmployees,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -87,7 +87,7 @@ class __$$FetchEmployeesImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$FetchEmployeesImpl implements _FetchEmployees {
+class _$FetchEmployeesImpl implements FetchEmployees {
   const _$FetchEmployeesImpl();
 
   @override
@@ -135,7 +135,7 @@ class _$FetchEmployeesImpl implements _FetchEmployees {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_FetchEmployees value) fetchEmployees,
+    required TResult Function(FetchEmployees value) fetchEmployees,
   }) {
     return fetchEmployees(this);
   }
@@ -143,7 +143,7 @@ class _$FetchEmployeesImpl implements _FetchEmployees {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_FetchEmployees value)? fetchEmployees,
+    TResult? Function(FetchEmployees value)? fetchEmployees,
   }) {
     return fetchEmployees?.call(this);
   }
@@ -151,7 +151,7 @@ class _$FetchEmployeesImpl implements _FetchEmployees {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_FetchEmployees value)? fetchEmployees,
+    TResult Function(FetchEmployees value)? fetchEmployees,
     required TResult orElse(),
   }) {
     if (fetchEmployees != null) {
@@ -161,57 +161,61 @@ class _$FetchEmployeesImpl implements _FetchEmployees {
   }
 }
 
-abstract class _FetchEmployees implements EmployeeListHomeEvent {
-  const factory _FetchEmployees() = _$FetchEmployeesImpl;
+abstract class FetchEmployees implements EmployeeListHomeEvent {
+  const factory FetchEmployees() = _$FetchEmployeesImpl;
 }
 
 /// @nodoc
 mixin _$EmployeeListHomeState {
-  List<EmployeeModelData> get currentEmployeeList =>
-      throw _privateConstructorUsedError;
-  List<EmployeeModelData> get previousEmployeeList =>
-      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
     required TResult Function(List<EmployeeModelData> currentEmployeeList,
             List<EmployeeModelData> previousEmployeeList)
-        initial,
+        fetched,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
     TResult? Function(List<EmployeeModelData> currentEmployeeList,
             List<EmployeeModelData> previousEmployeeList)?
-        initial,
+        fetched,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
     TResult Function(List<EmployeeModelData> currentEmployeeList,
             List<EmployeeModelData> previousEmployeeList)?
-        initial,
+        fetched,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(Initial value) initial,
+    required TResult Function(Loading value) loading,
+    required TResult Function(Fetched value) fetched,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(Initial value)? initial,
+    TResult? Function(Loading value)? loading,
+    TResult? Function(Fetched value)? fetched,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(Initial value)? initial,
+    TResult Function(Loading value)? loading,
+    TResult Function(Fetched value)? fetched,
     required TResult orElse(),
   }) =>
-      throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $EmployeeListHomeStateCopyWith<EmployeeListHomeState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -220,10 +224,6 @@ abstract class $EmployeeListHomeStateCopyWith<$Res> {
   factory $EmployeeListHomeStateCopyWith(EmployeeListHomeState value,
           $Res Function(EmployeeListHomeState) then) =
       _$EmployeeListHomeStateCopyWithImpl<$Res, EmployeeListHomeState>;
-  @useResult
-  $Res call(
-      {List<EmployeeModelData> currentEmployeeList,
-      List<EmployeeModelData> previousEmployeeList});
 }
 
 /// @nodoc
@@ -236,37 +236,13 @@ class _$EmployeeListHomeStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? currentEmployeeList = null,
-    Object? previousEmployeeList = null,
-  }) {
-    return _then(_value.copyWith(
-      currentEmployeeList: null == currentEmployeeList
-          ? _value.currentEmployeeList
-          : currentEmployeeList // ignore: cast_nullable_to_non_nullable
-              as List<EmployeeModelData>,
-      previousEmployeeList: null == previousEmployeeList
-          ? _value.previousEmployeeList
-          : previousEmployeeList // ignore: cast_nullable_to_non_nullable
-              as List<EmployeeModelData>,
-    ) as $Val);
-  }
 }
 
 /// @nodoc
-abstract class _$$InitialImplCopyWith<$Res>
-    implements $EmployeeListHomeStateCopyWith<$Res> {
+abstract class _$$InitialImplCopyWith<$Res> {
   factory _$$InitialImplCopyWith(
           _$InitialImpl value, $Res Function(_$InitialImpl) then) =
       __$$InitialImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {List<EmployeeModelData> currentEmployeeList,
-      List<EmployeeModelData> previousEmployeeList});
 }
 
 /// @nodoc
@@ -276,6 +252,238 @@ class __$$InitialImplCopyWithImpl<$Res>
   __$$InitialImplCopyWithImpl(
       _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$InitialImpl implements Initial {
+  const _$InitialImpl();
+
+  @override
+  String toString() {
+    return 'EmployeeListHomeState.initial()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$InitialImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(List<EmployeeModelData> currentEmployeeList,
+            List<EmployeeModelData> previousEmployeeList)
+        fetched,
+  }) {
+    return initial();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(List<EmployeeModelData> currentEmployeeList,
+            List<EmployeeModelData> previousEmployeeList)?
+        fetched,
+  }) {
+    return initial?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<EmployeeModelData> currentEmployeeList,
+            List<EmployeeModelData> previousEmployeeList)?
+        fetched,
+    required TResult orElse(),
+  }) {
+    if (initial != null) {
+      return initial();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Initial value) initial,
+    required TResult Function(Loading value) loading,
+    required TResult Function(Fetched value) fetched,
+  }) {
+    return initial(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Initial value)? initial,
+    TResult? Function(Loading value)? loading,
+    TResult? Function(Fetched value)? fetched,
+  }) {
+    return initial?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Initial value)? initial,
+    TResult Function(Loading value)? loading,
+    TResult Function(Fetched value)? fetched,
+    required TResult orElse(),
+  }) {
+    if (initial != null) {
+      return initial(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Initial implements EmployeeListHomeState {
+  const factory Initial() = _$InitialImpl;
+}
+
+/// @nodoc
+abstract class _$$LoadingImplCopyWith<$Res> {
+  factory _$$LoadingImplCopyWith(
+          _$LoadingImpl value, $Res Function(_$LoadingImpl) then) =
+      __$$LoadingImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$LoadingImplCopyWithImpl<$Res>
+    extends _$EmployeeListHomeStateCopyWithImpl<$Res, _$LoadingImpl>
+    implements _$$LoadingImplCopyWith<$Res> {
+  __$$LoadingImplCopyWithImpl(
+      _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$LoadingImpl implements Loading {
+  const _$LoadingImpl();
+
+  @override
+  String toString() {
+    return 'EmployeeListHomeState.loading()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$LoadingImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(List<EmployeeModelData> currentEmployeeList,
+            List<EmployeeModelData> previousEmployeeList)
+        fetched,
+  }) {
+    return loading();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(List<EmployeeModelData> currentEmployeeList,
+            List<EmployeeModelData> previousEmployeeList)?
+        fetched,
+  }) {
+    return loading?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<EmployeeModelData> currentEmployeeList,
+            List<EmployeeModelData> previousEmployeeList)?
+        fetched,
+    required TResult orElse(),
+  }) {
+    if (loading != null) {
+      return loading();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Initial value) initial,
+    required TResult Function(Loading value) loading,
+    required TResult Function(Fetched value) fetched,
+  }) {
+    return loading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Initial value)? initial,
+    TResult? Function(Loading value)? loading,
+    TResult? Function(Fetched value)? fetched,
+  }) {
+    return loading?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Initial value)? initial,
+    TResult Function(Loading value)? loading,
+    TResult Function(Fetched value)? fetched,
+    required TResult orElse(),
+  }) {
+    if (loading != null) {
+      return loading(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Loading implements EmployeeListHomeState {
+  const factory Loading() = _$LoadingImpl;
+}
+
+/// @nodoc
+abstract class _$$FetchedImplCopyWith<$Res> {
+  factory _$$FetchedImplCopyWith(
+          _$FetchedImpl value, $Res Function(_$FetchedImpl) then) =
+      __$$FetchedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call(
+      {List<EmployeeModelData> currentEmployeeList,
+      List<EmployeeModelData> previousEmployeeList});
+}
+
+/// @nodoc
+class __$$FetchedImplCopyWithImpl<$Res>
+    extends _$EmployeeListHomeStateCopyWithImpl<$Res, _$FetchedImpl>
+    implements _$$FetchedImplCopyWith<$Res> {
+  __$$FetchedImplCopyWithImpl(
+      _$FetchedImpl _value, $Res Function(_$FetchedImpl) _then)
+      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -283,7 +491,7 @@ class __$$InitialImplCopyWithImpl<$Res>
     Object? currentEmployeeList = null,
     Object? previousEmployeeList = null,
   }) {
-    return _then(_$InitialImpl(
+    return _then(_$FetchedImpl(
       currentEmployeeList: null == currentEmployeeList
           ? _value._currentEmployeeList
           : currentEmployeeList // ignore: cast_nullable_to_non_nullable
@@ -298,8 +506,8 @@ class __$$InitialImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$InitialImpl implements _Initial {
-  const _$InitialImpl(
+class _$FetchedImpl implements Fetched {
+  const _$FetchedImpl(
       {required final List<EmployeeModelData> currentEmployeeList,
       required final List<EmployeeModelData> previousEmployeeList})
       : _currentEmployeeList = currentEmployeeList,
@@ -325,14 +533,14 @@ class _$InitialImpl implements _Initial {
 
   @override
   String toString() {
-    return 'EmployeeListHomeState.initial(currentEmployeeList: $currentEmployeeList, previousEmployeeList: $previousEmployeeList)';
+    return 'EmployeeListHomeState.fetched(currentEmployeeList: $currentEmployeeList, previousEmployeeList: $previousEmployeeList)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$InitialImpl &&
+            other is _$FetchedImpl &&
             const DeepCollectionEquality()
                 .equals(other._currentEmployeeList, _currentEmployeeList) &&
             const DeepCollectionEquality()
@@ -348,39 +556,45 @@ class _$InitialImpl implements _Initial {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
-      __$$InitialImplCopyWithImpl<_$InitialImpl>(this, _$identity);
+  _$$FetchedImplCopyWith<_$FetchedImpl> get copyWith =>
+      __$$FetchedImplCopyWithImpl<_$FetchedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
     required TResult Function(List<EmployeeModelData> currentEmployeeList,
             List<EmployeeModelData> previousEmployeeList)
-        initial,
+        fetched,
   }) {
-    return initial(currentEmployeeList, previousEmployeeList);
+    return fetched(currentEmployeeList, previousEmployeeList);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
     TResult? Function(List<EmployeeModelData> currentEmployeeList,
             List<EmployeeModelData> previousEmployeeList)?
-        initial,
+        fetched,
   }) {
-    return initial?.call(currentEmployeeList, previousEmployeeList);
+    return fetched?.call(currentEmployeeList, previousEmployeeList);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
     TResult Function(List<EmployeeModelData> currentEmployeeList,
             List<EmployeeModelData> previousEmployeeList)?
-        initial,
+        fetched,
     required TResult orElse(),
   }) {
-    if (initial != null) {
-      return initial(currentEmployeeList, previousEmployeeList);
+    if (fetched != null) {
+      return fetched(currentEmployeeList, previousEmployeeList);
     }
     return orElse();
   }
@@ -388,44 +602,47 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(Initial value) initial,
+    required TResult Function(Loading value) loading,
+    required TResult Function(Fetched value) fetched,
   }) {
-    return initial(this);
+    return fetched(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
+    TResult? Function(Initial value)? initial,
+    TResult? Function(Loading value)? loading,
+    TResult? Function(Fetched value)? fetched,
   }) {
-    return initial?.call(this);
+    return fetched?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(Initial value)? initial,
+    TResult Function(Loading value)? loading,
+    TResult Function(Fetched value)? fetched,
     required TResult orElse(),
   }) {
-    if (initial != null) {
-      return initial(this);
+    if (fetched != null) {
+      return fetched(this);
     }
     return orElse();
   }
 }
 
-abstract class _Initial implements EmployeeListHomeState {
-  const factory _Initial(
+abstract class Fetched implements EmployeeListHomeState {
+  const factory Fetched(
           {required final List<EmployeeModelData> currentEmployeeList,
           required final List<EmployeeModelData> previousEmployeeList}) =
-      _$InitialImpl;
+      _$FetchedImpl;
 
-  @override
   List<EmployeeModelData> get currentEmployeeList;
-  @override
   List<EmployeeModelData> get previousEmployeeList;
-  @override
   @JsonKey(ignore: true)
-  _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
+  _$$FetchedImplCopyWith<_$FetchedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

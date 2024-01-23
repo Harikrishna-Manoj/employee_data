@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:employee_data/domain/database_model/database_model.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
@@ -12,5 +10,11 @@ class DataBaseService {
     final Box employeeBox = Hive.box<EmployeeModelData>("employee");
     Future<int> id = employeeBox.add(employeesData);
     return id;
+  }
+
+  static Future<List<EmployeeModelData>> fetchEmployeeData() async {
+    final Box employeeBox = await Hive.openBox<EmployeeModelData>("employee");
+    List<EmployeeModelData> employeeDataList = [...employeeBox.values];
+    return employeeDataList;
   }
 }

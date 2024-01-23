@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_final_fields
 
 import 'package:employee_data/application/add_employee_bloc/add_employee_bloc.dart';
+import 'package:employee_data/application/employee_list_bloc/employee_list_home_bloc.dart';
 import 'package:employee_data/core/constant.dart';
 import 'package:employee_data/domain/database_model/database_model.dart';
 
@@ -134,7 +135,7 @@ class DatePickeCalendar extends StatelessWidget {
                   );
                   if (pickedDate != null) {
                     joinDateController.text =
-                        "${pickedDate.day} ${monthMap[pickedDate.month]} ${pickedDate.year}";
+                        DateFormat('d LLL yyyy').format(pickedDate);
                   }
                 },
                 icon: const Icon(
@@ -174,7 +175,6 @@ class DatePickeCalendar extends StatelessWidget {
                   DateTime? pickedDate = await showCustomDatePicker(
                     isDateStartingCalendar: false,
                     fieldLabelText: "hwll",
-                    // initialEntryMode: DatePickerEntryMode.calendarOnly,
                     confirmText: "Save",
                     initialDate: DateTime.now(),
                     context: context,
@@ -259,9 +259,12 @@ class CustomButton extends StatelessWidget {
                 EmployeeModelData data = EmployeeModelData(
                     employeeName: nameController?.text.trim() ?? "",
                     role: roleController?.text.trim() ?? "",
-                    joinDate: joinDateController?.text.trim() ??
-                        DateFormat('d M yyyy').format(DateTime.now()),
-                    resignDate: resignDateController?.text.trim() ?? "No date");
+                    joinDate: joinDateController?.text.trim() == ""
+                        ? DateFormat('d LLL yyyy').format(DateTime.now())
+                        : joinDateController?.text.trim(),
+                    resignDate: resignDateController?.text.trim() == ""
+                        ? "No date"
+                        : resignDateController?.text.trim());
                 context
                     .read<AddEmployeeBloc>()
                     .add(AddEmployeeEvent.addEmployee(data));
@@ -273,6 +276,9 @@ class CustomButton extends StatelessWidget {
                     dismissDirection: DismissDirection.down,
                     backgroundColor: lightButtonBlue));
                 Navigator.pop(context);
+                context
+                    .read<EmployeeListHomeBloc>()
+                    .add(const FetchEmployees());
               }
             }
           } else {
