@@ -37,7 +37,9 @@ class ScreenEdiEmployee extends StatelessWidget {
         actions: [
           IconButton(
               onPressed: () {
-                context.read<EmployeeListHomeBloc>().add(DeleteEmployee(id!));
+                context
+                    .read<EmployeeListHomeBloc>()
+                    .add(DeleteFromEditPageEmployeeEvent(id!));
                 Navigator.pop(context);
                 ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                     content: Text(

@@ -6,6 +6,7 @@ import 'package:employee_data/core/constant.dart';
 import 'package:employee_data/domain/database_model/database_model.dart';
 
 import 'package:employee_data/presentation/page_add_employee/widget/date_picker.dart';
+import 'package:employee_data/presentation/page_home/screen_home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -190,8 +191,9 @@ class DatePickeCalendar extends StatelessWidget {
                     lastDate: DateTime(2050),
                   );
                   if (pickedDate != null) {
-                    resignDateController.text =
-                        DateFormat('d LLL yyyy').format(pickedDate);
+                    resignDateController.text = pickedDate.year == 0000
+                        ? "No date"
+                        : DateFormat('d LLL yyyy').format(pickedDate);
                   }
                 },
                 icon: const Icon(
@@ -283,11 +285,21 @@ class CustomButton extends StatelessWidget {
                   ),
                   dismissDirection: DismissDirection.down,
                   backgroundColor: lightButtonBlue));
-              Navigator.pop(context);
-              context.read<EmployeeListHomeBloc>().add(const FetchEmployees());
+              Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const ScreenHome(),
+                  ));
+              context
+                  .read<EmployeeListHomeBloc>()
+                  .add(const FetchEmployeesEvent());
             }
           } else {
-            Navigator.pop(context);
+            Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const ScreenHome(),
+                ));
           }
         },
         child: Center(

@@ -18,39 +18,51 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$EmployeeListHomeEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() fetchEmployees,
-    required TResult Function(int employeeId) deleteEmployee,
+    required TResult Function() fetchEmployeesEvent,
+    required TResult Function(int employeeId) deleteFromEditPageEmployeeEvent,
+    required TResult Function(int employeeId) deleteEmployeeFromHomeEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? fetchEmployees,
-    TResult? Function(int employeeId)? deleteEmployee,
+    TResult? Function()? fetchEmployeesEvent,
+    TResult? Function(int employeeId)? deleteFromEditPageEmployeeEvent,
+    TResult? Function(int employeeId)? deleteEmployeeFromHomeEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? fetchEmployees,
-    TResult Function(int employeeId)? deleteEmployee,
+    TResult Function()? fetchEmployeesEvent,
+    TResult Function(int employeeId)? deleteFromEditPageEmployeeEvent,
+    TResult Function(int employeeId)? deleteEmployeeFromHomeEvent,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(FetchEmployees value) fetchEmployees,
-    required TResult Function(DeleteEmployee value) deleteEmployee,
+    required TResult Function(FetchEmployeesEvent value) fetchEmployeesEvent,
+    required TResult Function(DeleteFromEditPageEmployeeEvent value)
+        deleteFromEditPageEmployeeEvent,
+    required TResult Function(DeleteEmployeeFromHomeEvent value)
+        deleteEmployeeFromHomeEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(FetchEmployees value)? fetchEmployees,
-    TResult? Function(DeleteEmployee value)? deleteEmployee,
+    TResult? Function(FetchEmployeesEvent value)? fetchEmployeesEvent,
+    TResult? Function(DeleteFromEditPageEmployeeEvent value)?
+        deleteFromEditPageEmployeeEvent,
+    TResult? Function(DeleteEmployeeFromHomeEvent value)?
+        deleteEmployeeFromHomeEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(FetchEmployees value)? fetchEmployees,
-    TResult Function(DeleteEmployee value)? deleteEmployee,
+    TResult Function(FetchEmployeesEvent value)? fetchEmployeesEvent,
+    TResult Function(DeleteFromEditPageEmployeeEvent value)?
+        deleteFromEditPageEmployeeEvent,
+    TResult Function(DeleteEmployeeFromHomeEvent value)?
+        deleteEmployeeFromHomeEvent,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -76,35 +88,36 @@ class _$EmployeeListHomeEventCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$FetchEmployeesImplCopyWith<$Res> {
-  factory _$$FetchEmployeesImplCopyWith(_$FetchEmployeesImpl value,
-          $Res Function(_$FetchEmployeesImpl) then) =
-      __$$FetchEmployeesImplCopyWithImpl<$Res>;
+abstract class _$$FetchEmployeesEventImplCopyWith<$Res> {
+  factory _$$FetchEmployeesEventImplCopyWith(_$FetchEmployeesEventImpl value,
+          $Res Function(_$FetchEmployeesEventImpl) then) =
+      __$$FetchEmployeesEventImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$FetchEmployeesImplCopyWithImpl<$Res>
-    extends _$EmployeeListHomeEventCopyWithImpl<$Res, _$FetchEmployeesImpl>
-    implements _$$FetchEmployeesImplCopyWith<$Res> {
-  __$$FetchEmployeesImplCopyWithImpl(
-      _$FetchEmployeesImpl _value, $Res Function(_$FetchEmployeesImpl) _then)
+class __$$FetchEmployeesEventImplCopyWithImpl<$Res>
+    extends _$EmployeeListHomeEventCopyWithImpl<$Res, _$FetchEmployeesEventImpl>
+    implements _$$FetchEmployeesEventImplCopyWith<$Res> {
+  __$$FetchEmployeesEventImplCopyWithImpl(_$FetchEmployeesEventImpl _value,
+      $Res Function(_$FetchEmployeesEventImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$FetchEmployeesImpl implements FetchEmployees {
-  const _$FetchEmployeesImpl();
+class _$FetchEmployeesEventImpl implements FetchEmployeesEvent {
+  const _$FetchEmployeesEventImpl();
 
   @override
   String toString() {
-    return 'EmployeeListHomeEvent.fetchEmployees()';
+    return 'EmployeeListHomeEvent.fetchEmployeesEvent()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$FetchEmployeesImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$FetchEmployeesEventImpl);
   }
 
   @override
@@ -113,30 +126,33 @@ class _$FetchEmployeesImpl implements FetchEmployees {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() fetchEmployees,
-    required TResult Function(int employeeId) deleteEmployee,
+    required TResult Function() fetchEmployeesEvent,
+    required TResult Function(int employeeId) deleteFromEditPageEmployeeEvent,
+    required TResult Function(int employeeId) deleteEmployeeFromHomeEvent,
   }) {
-    return fetchEmployees();
+    return fetchEmployeesEvent();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? fetchEmployees,
-    TResult? Function(int employeeId)? deleteEmployee,
+    TResult? Function()? fetchEmployeesEvent,
+    TResult? Function(int employeeId)? deleteFromEditPageEmployeeEvent,
+    TResult? Function(int employeeId)? deleteEmployeeFromHomeEvent,
   }) {
-    return fetchEmployees?.call();
+    return fetchEmployeesEvent?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? fetchEmployees,
-    TResult Function(int employeeId)? deleteEmployee,
+    TResult Function()? fetchEmployeesEvent,
+    TResult Function(int employeeId)? deleteFromEditPageEmployeeEvent,
+    TResult Function(int employeeId)? deleteEmployeeFromHomeEvent,
     required TResult orElse(),
   }) {
-    if (fetchEmployees != null) {
-      return fetchEmployees();
+    if (fetchEmployeesEvent != null) {
+      return fetchEmployeesEvent();
     }
     return orElse();
   }
@@ -144,54 +160,66 @@ class _$FetchEmployeesImpl implements FetchEmployees {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(FetchEmployees value) fetchEmployees,
-    required TResult Function(DeleteEmployee value) deleteEmployee,
+    required TResult Function(FetchEmployeesEvent value) fetchEmployeesEvent,
+    required TResult Function(DeleteFromEditPageEmployeeEvent value)
+        deleteFromEditPageEmployeeEvent,
+    required TResult Function(DeleteEmployeeFromHomeEvent value)
+        deleteEmployeeFromHomeEvent,
   }) {
-    return fetchEmployees(this);
+    return fetchEmployeesEvent(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(FetchEmployees value)? fetchEmployees,
-    TResult? Function(DeleteEmployee value)? deleteEmployee,
+    TResult? Function(FetchEmployeesEvent value)? fetchEmployeesEvent,
+    TResult? Function(DeleteFromEditPageEmployeeEvent value)?
+        deleteFromEditPageEmployeeEvent,
+    TResult? Function(DeleteEmployeeFromHomeEvent value)?
+        deleteEmployeeFromHomeEvent,
   }) {
-    return fetchEmployees?.call(this);
+    return fetchEmployeesEvent?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(FetchEmployees value)? fetchEmployees,
-    TResult Function(DeleteEmployee value)? deleteEmployee,
+    TResult Function(FetchEmployeesEvent value)? fetchEmployeesEvent,
+    TResult Function(DeleteFromEditPageEmployeeEvent value)?
+        deleteFromEditPageEmployeeEvent,
+    TResult Function(DeleteEmployeeFromHomeEvent value)?
+        deleteEmployeeFromHomeEvent,
     required TResult orElse(),
   }) {
-    if (fetchEmployees != null) {
-      return fetchEmployees(this);
+    if (fetchEmployeesEvent != null) {
+      return fetchEmployeesEvent(this);
     }
     return orElse();
   }
 }
 
-abstract class FetchEmployees implements EmployeeListHomeEvent {
-  const factory FetchEmployees() = _$FetchEmployeesImpl;
+abstract class FetchEmployeesEvent implements EmployeeListHomeEvent {
+  const factory FetchEmployeesEvent() = _$FetchEmployeesEventImpl;
 }
 
 /// @nodoc
-abstract class _$$DeleteEmployeeImplCopyWith<$Res> {
-  factory _$$DeleteEmployeeImplCopyWith(_$DeleteEmployeeImpl value,
-          $Res Function(_$DeleteEmployeeImpl) then) =
-      __$$DeleteEmployeeImplCopyWithImpl<$Res>;
+abstract class _$$DeleteFromEditPageEmployeeEventImplCopyWith<$Res> {
+  factory _$$DeleteFromEditPageEmployeeEventImplCopyWith(
+          _$DeleteFromEditPageEmployeeEventImpl value,
+          $Res Function(_$DeleteFromEditPageEmployeeEventImpl) then) =
+      __$$DeleteFromEditPageEmployeeEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int employeeId});
 }
 
 /// @nodoc
-class __$$DeleteEmployeeImplCopyWithImpl<$Res>
-    extends _$EmployeeListHomeEventCopyWithImpl<$Res, _$DeleteEmployeeImpl>
-    implements _$$DeleteEmployeeImplCopyWith<$Res> {
-  __$$DeleteEmployeeImplCopyWithImpl(
-      _$DeleteEmployeeImpl _value, $Res Function(_$DeleteEmployeeImpl) _then)
+class __$$DeleteFromEditPageEmployeeEventImplCopyWithImpl<$Res>
+    extends _$EmployeeListHomeEventCopyWithImpl<$Res,
+        _$DeleteFromEditPageEmployeeEventImpl>
+    implements _$$DeleteFromEditPageEmployeeEventImplCopyWith<$Res> {
+  __$$DeleteFromEditPageEmployeeEventImplCopyWithImpl(
+      _$DeleteFromEditPageEmployeeEventImpl _value,
+      $Res Function(_$DeleteFromEditPageEmployeeEventImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -199,7 +227,7 @@ class __$$DeleteEmployeeImplCopyWithImpl<$Res>
   $Res call({
     Object? employeeId = null,
   }) {
-    return _then(_$DeleteEmployeeImpl(
+    return _then(_$DeleteFromEditPageEmployeeEventImpl(
       null == employeeId
           ? _value.employeeId
           : employeeId // ignore: cast_nullable_to_non_nullable
@@ -210,22 +238,23 @@ class __$$DeleteEmployeeImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$DeleteEmployeeImpl implements DeleteEmployee {
-  const _$DeleteEmployeeImpl(this.employeeId);
+class _$DeleteFromEditPageEmployeeEventImpl
+    implements DeleteFromEditPageEmployeeEvent {
+  const _$DeleteFromEditPageEmployeeEventImpl(this.employeeId);
 
   @override
   final int employeeId;
 
   @override
   String toString() {
-    return 'EmployeeListHomeEvent.deleteEmployee(employeeId: $employeeId)';
+    return 'EmployeeListHomeEvent.deleteFromEditPageEmployeeEvent(employeeId: $employeeId)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$DeleteEmployeeImpl &&
+            other is _$DeleteFromEditPageEmployeeEventImpl &&
             (identical(other.employeeId, employeeId) ||
                 other.employeeId == employeeId));
   }
@@ -236,37 +265,41 @@ class _$DeleteEmployeeImpl implements DeleteEmployee {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$DeleteEmployeeImplCopyWith<_$DeleteEmployeeImpl> get copyWith =>
-      __$$DeleteEmployeeImplCopyWithImpl<_$DeleteEmployeeImpl>(
-          this, _$identity);
+  _$$DeleteFromEditPageEmployeeEventImplCopyWith<
+          _$DeleteFromEditPageEmployeeEventImpl>
+      get copyWith => __$$DeleteFromEditPageEmployeeEventImplCopyWithImpl<
+          _$DeleteFromEditPageEmployeeEventImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() fetchEmployees,
-    required TResult Function(int employeeId) deleteEmployee,
+    required TResult Function() fetchEmployeesEvent,
+    required TResult Function(int employeeId) deleteFromEditPageEmployeeEvent,
+    required TResult Function(int employeeId) deleteEmployeeFromHomeEvent,
   }) {
-    return deleteEmployee(employeeId);
+    return deleteFromEditPageEmployeeEvent(employeeId);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? fetchEmployees,
-    TResult? Function(int employeeId)? deleteEmployee,
+    TResult? Function()? fetchEmployeesEvent,
+    TResult? Function(int employeeId)? deleteFromEditPageEmployeeEvent,
+    TResult? Function(int employeeId)? deleteEmployeeFromHomeEvent,
   }) {
-    return deleteEmployee?.call(employeeId);
+    return deleteFromEditPageEmployeeEvent?.call(employeeId);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? fetchEmployees,
-    TResult Function(int employeeId)? deleteEmployee,
+    TResult Function()? fetchEmployeesEvent,
+    TResult Function(int employeeId)? deleteFromEditPageEmployeeEvent,
+    TResult Function(int employeeId)? deleteEmployeeFromHomeEvent,
     required TResult orElse(),
   }) {
-    if (deleteEmployee != null) {
-      return deleteEmployee(employeeId);
+    if (deleteFromEditPageEmployeeEvent != null) {
+      return deleteFromEditPageEmployeeEvent(employeeId);
     }
     return orElse();
   }
@@ -274,42 +307,205 @@ class _$DeleteEmployeeImpl implements DeleteEmployee {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(FetchEmployees value) fetchEmployees,
-    required TResult Function(DeleteEmployee value) deleteEmployee,
+    required TResult Function(FetchEmployeesEvent value) fetchEmployeesEvent,
+    required TResult Function(DeleteFromEditPageEmployeeEvent value)
+        deleteFromEditPageEmployeeEvent,
+    required TResult Function(DeleteEmployeeFromHomeEvent value)
+        deleteEmployeeFromHomeEvent,
   }) {
-    return deleteEmployee(this);
+    return deleteFromEditPageEmployeeEvent(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(FetchEmployees value)? fetchEmployees,
-    TResult? Function(DeleteEmployee value)? deleteEmployee,
+    TResult? Function(FetchEmployeesEvent value)? fetchEmployeesEvent,
+    TResult? Function(DeleteFromEditPageEmployeeEvent value)?
+        deleteFromEditPageEmployeeEvent,
+    TResult? Function(DeleteEmployeeFromHomeEvent value)?
+        deleteEmployeeFromHomeEvent,
   }) {
-    return deleteEmployee?.call(this);
+    return deleteFromEditPageEmployeeEvent?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(FetchEmployees value)? fetchEmployees,
-    TResult Function(DeleteEmployee value)? deleteEmployee,
+    TResult Function(FetchEmployeesEvent value)? fetchEmployeesEvent,
+    TResult Function(DeleteFromEditPageEmployeeEvent value)?
+        deleteFromEditPageEmployeeEvent,
+    TResult Function(DeleteEmployeeFromHomeEvent value)?
+        deleteEmployeeFromHomeEvent,
     required TResult orElse(),
   }) {
-    if (deleteEmployee != null) {
-      return deleteEmployee(this);
+    if (deleteFromEditPageEmployeeEvent != null) {
+      return deleteFromEditPageEmployeeEvent(this);
     }
     return orElse();
   }
 }
 
-abstract class DeleteEmployee implements EmployeeListHomeEvent {
-  const factory DeleteEmployee(final int employeeId) = _$DeleteEmployeeImpl;
+abstract class DeleteFromEditPageEmployeeEvent
+    implements EmployeeListHomeEvent {
+  const factory DeleteFromEditPageEmployeeEvent(final int employeeId) =
+      _$DeleteFromEditPageEmployeeEventImpl;
 
   int get employeeId;
   @JsonKey(ignore: true)
-  _$$DeleteEmployeeImplCopyWith<_$DeleteEmployeeImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$DeleteFromEditPageEmployeeEventImplCopyWith<
+          _$DeleteFromEditPageEmployeeEventImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$DeleteEmployeeFromHomeEventImplCopyWith<$Res> {
+  factory _$$DeleteEmployeeFromHomeEventImplCopyWith(
+          _$DeleteEmployeeFromHomeEventImpl value,
+          $Res Function(_$DeleteEmployeeFromHomeEventImpl) then) =
+      __$$DeleteEmployeeFromHomeEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int employeeId});
+}
+
+/// @nodoc
+class __$$DeleteEmployeeFromHomeEventImplCopyWithImpl<$Res>
+    extends _$EmployeeListHomeEventCopyWithImpl<$Res,
+        _$DeleteEmployeeFromHomeEventImpl>
+    implements _$$DeleteEmployeeFromHomeEventImplCopyWith<$Res> {
+  __$$DeleteEmployeeFromHomeEventImplCopyWithImpl(
+      _$DeleteEmployeeFromHomeEventImpl _value,
+      $Res Function(_$DeleteEmployeeFromHomeEventImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? employeeId = null,
+  }) {
+    return _then(_$DeleteEmployeeFromHomeEventImpl(
+      null == employeeId
+          ? _value.employeeId
+          : employeeId // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$DeleteEmployeeFromHomeEventImpl implements DeleteEmployeeFromHomeEvent {
+  const _$DeleteEmployeeFromHomeEventImpl(this.employeeId);
+
+  @override
+  final int employeeId;
+
+  @override
+  String toString() {
+    return 'EmployeeListHomeEvent.deleteEmployeeFromHomeEvent(employeeId: $employeeId)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DeleteEmployeeFromHomeEventImpl &&
+            (identical(other.employeeId, employeeId) ||
+                other.employeeId == employeeId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, employeeId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$DeleteEmployeeFromHomeEventImplCopyWith<_$DeleteEmployeeFromHomeEventImpl>
+      get copyWith => __$$DeleteEmployeeFromHomeEventImplCopyWithImpl<
+          _$DeleteEmployeeFromHomeEventImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() fetchEmployeesEvent,
+    required TResult Function(int employeeId) deleteFromEditPageEmployeeEvent,
+    required TResult Function(int employeeId) deleteEmployeeFromHomeEvent,
+  }) {
+    return deleteEmployeeFromHomeEvent(employeeId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? fetchEmployeesEvent,
+    TResult? Function(int employeeId)? deleteFromEditPageEmployeeEvent,
+    TResult? Function(int employeeId)? deleteEmployeeFromHomeEvent,
+  }) {
+    return deleteEmployeeFromHomeEvent?.call(employeeId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? fetchEmployeesEvent,
+    TResult Function(int employeeId)? deleteFromEditPageEmployeeEvent,
+    TResult Function(int employeeId)? deleteEmployeeFromHomeEvent,
+    required TResult orElse(),
+  }) {
+    if (deleteEmployeeFromHomeEvent != null) {
+      return deleteEmployeeFromHomeEvent(employeeId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(FetchEmployeesEvent value) fetchEmployeesEvent,
+    required TResult Function(DeleteFromEditPageEmployeeEvent value)
+        deleteFromEditPageEmployeeEvent,
+    required TResult Function(DeleteEmployeeFromHomeEvent value)
+        deleteEmployeeFromHomeEvent,
+  }) {
+    return deleteEmployeeFromHomeEvent(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(FetchEmployeesEvent value)? fetchEmployeesEvent,
+    TResult? Function(DeleteFromEditPageEmployeeEvent value)?
+        deleteFromEditPageEmployeeEvent,
+    TResult? Function(DeleteEmployeeFromHomeEvent value)?
+        deleteEmployeeFromHomeEvent,
+  }) {
+    return deleteEmployeeFromHomeEvent?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(FetchEmployeesEvent value)? fetchEmployeesEvent,
+    TResult Function(DeleteFromEditPageEmployeeEvent value)?
+        deleteFromEditPageEmployeeEvent,
+    TResult Function(DeleteEmployeeFromHomeEvent value)?
+        deleteEmployeeFromHomeEvent,
+    required TResult orElse(),
+  }) {
+    if (deleteEmployeeFromHomeEvent != null) {
+      return deleteEmployeeFromHomeEvent(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class DeleteEmployeeFromHomeEvent implements EmployeeListHomeEvent {
+  const factory DeleteEmployeeFromHomeEvent(final int employeeId) =
+      _$DeleteEmployeeFromHomeEventImpl;
+
+  int get employeeId;
+  @JsonKey(ignore: true)
+  _$$DeleteEmployeeFromHomeEventImplCopyWith<_$DeleteEmployeeFromHomeEventImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc

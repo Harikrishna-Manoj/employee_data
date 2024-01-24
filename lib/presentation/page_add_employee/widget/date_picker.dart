@@ -800,12 +800,14 @@ class _DatePickerDialogState extends State<DatePickerDialog>
                                         } else if (choiceChipValue == 3) {
                                           DateTime date = DateTime.now();
                                           DateTime afterOneWeek =
-                                              date.add(Duration(days: 7));
+                                              date.add(const Duration(days: 7));
                                           Navigator.pop(context, afterOneWeek);
                                         }
                                         break;
                                       case false:
                                         if (choiceChipValue == 0) {
+                                          Navigator.pop(
+                                              context, DateTime(index));
                                         } else if (choiceChipValue == 1) {
                                           _handleToday();
                                         }
